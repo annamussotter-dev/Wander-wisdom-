@@ -44,6 +44,8 @@ const PEOPLE = [
 ];
 
 const SVG_NS = "http://www.w3.org/2000/svg";
+// the map is the one colourful thing on the page: one ink per person
+const DOT_COLOURS = ["#ff5a1f", "#1f3ddb", "#ff4f8b", "#f2a900", "#11a07a"];
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const map = document.querySelector(".hero .map");
@@ -90,6 +92,8 @@ PEOPLE.forEach((p, i) => {
   ring.setAttribute("class", "ring");
   ring.setAttribute("cx", p.x); ring.setAttribute("cy", p.y); ring.setAttribute("r", 6);
   ring.style.animationDelay = `${i * 0.45}s`;
+
+  g.style.setProperty("--c", DOT_COLOURS[i % DOT_COLOURS.length]);
 
   const core = document.createElementNS(SVG_NS, "circle");
   core.setAttribute("class", "core");
@@ -208,3 +212,31 @@ el(".card-next").addEventListener("click", () => {
 });
 el(".card-close").addEventListener("click", close);
 document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !card.hidden) close(); });
+
+/* --- keep the dashed path in "How to use it" lined up with the steps --- */
+const howPath = document.querySelector(".how-path");
+const steps = document.querySelector(".steps");
+function fitHowPath() {
+  if (!howPath || !steps) return;
+  const how = steps.closest(".how");
+  const top = steps.offsetTop;
+  howPath.style.setProperty("--steps-top", `${top}px`);
+  howPath.style.setProperty("--steps-h", `${steps.offsetHeight}px`);
+  // move each bend to the number circle of its step
+  const items = [...steps.children];
+  const w = howPath.getBoundingClientRect().width || 1;
+  const left = howPath.getBoundingClientRect().left;
+  const pts = items.map((li) => {
+    const r = li.getBoundingClientRect(), base = steps.getBoundingClientRect();
+    return [((r.left - left + 21) / w) * 100, ((r.top - base.top + 21) / steps.offsetHeight) * 600];
+  });
+  let d = `M${pts[0][0].toFixed(1)} ${pts[0][1].toFixed(1)}`;
+  for (let i = 1; i < pts.length; i++) {
+    const [x0, y0] = pts[i - 1], [x1, y1] = pts[i], k = (y1 - y0) * 0.55;
+    d += ` C ${x0.toFixed(1)} ${(y0 + k).toFixed(1)}, ${x1.toFixed(1)} ${(y1 - k).toFixed(1)}, ${x1.toFixed(1)} ${y1.toFixed(1)}`;
+  }
+  howPath.querySelector("path").setAttribute("d", d);
+}
+window.addEventListener("load", fitHowPath);
+window.addEventListener("resize", fitHowPath);
+document.fonts && document.fonts.ready.then(fitHowPath);

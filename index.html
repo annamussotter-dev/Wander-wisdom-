@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Wander Wisdom — a journal written by the people you meet</title>
   <meta name="description" content="Wander Wisdom is a travel journal you hand to the people you meet. They write their advice, lessons and hidden gems into your book.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Jost:ital,wght@0,300;0,400;0,500;1,300&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/jost-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/nanum-pen-script-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -33,6 +33,7 @@
   <nav aria-label="Main">
     <a href="#idea">The idea</a>
     <a href="#inside">Inside the book</a>
+    <a href="#collected">Collected wisdom</a>
     <a href="#story">Story</a>
     <a href="#get" class="nav-cta">Get the journal</a>
   </nav>
@@ -80,11 +81,18 @@
   <!-- IDEA -->
   <section class="idea" id="idea">
     <blockquote>
-      <p>There’s a hidden gem in everyone — you just have to find it.</p>
+      <p>There’s a hidden gem in everyone - you just have to find it.</p>
     </blockquote>
+    <div class="idea-grid">
+    <!-- PHOTO: save your photo as images/anna-with-journal.jpg -->
+    <figure class="polaroid polaroid-anna">
+      <img src="images/anna-with-journal.jpg" alt="Anna Mussotter holding her Wander Wisdom journal" width="900" height="1125" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
+      <figcaption>Anna with the first Wander Wisdom</figcaption>
+    </figure>
     <div class="idea-body">
       <p>On the road we meet people with their own stories and perspectives. Then we take a photo, say goodbye, and the conversation is gone.</p>
       <p><strong>Wander Wisdom is a journal you hand to the people you meet.</strong> They write their answers to questions that cut through small talk: what life is about, a lesson that changed them, advice for people in their twenties. Page by page, your book becomes a collection of the wisdom you found along the way.</p>
+    </div>
     </div>
   </section>
 
@@ -97,6 +105,10 @@
       <figure class="page">
         <img src="images/cover.webp" alt="Cover of Wander Wisdom with the title in large black letters" width="650" height="910" loading="lazy">
         <figcaption>The cover</figcaption>
+      </figure>
+      <figure class="page">
+        <img src="images/steps.webp" alt="Steps to your Wander Wisdom: profile, map, co-creation, doodle, inspiration" width="650" height="910" loading="lazy">
+        <figcaption>Steps to your Wander Wisdom</figcaption>
       </figure>
       <figure class="page">
         <img src="images/profile.webp" alt="Profile page with fields for name, hometown and meaningful places" width="650" height="910" loading="lazy">
@@ -117,6 +129,26 @@
       </figure>
     </div>
 
+    <div class="sample">
+      <figure class="sample-page">
+        <img src="images/questionnaire-35.webp" alt="Questionnaire on page 35: two important lessons you have learned from your travels, what brings you strength and joy for life, advice for people in their 20s, with space for name, hometown and socials" width="650" height="919" loading="lazy">
+      </figure>
+      <div class="sample-text">
+        <p class="hand-note">a page for someone you just met</p>
+        <h3 class="display">A questionnaire, up close</h3>
+        <p>Seven questionnaires, each with three questions that go beyond small talk. The person you meet writes their answers, then signs with their name, hometown and socials, so you can stay in touch.</p>
+        <p class="sample-label">Questions from the book</p>
+        <ul class="sample-list">
+          <li>Two important lessons you have learned from your travels?</li>
+          <li>What brings you strength and joy for life?</li>
+          <li>Advice for people in their 20s</li>
+          <li>Life is about…</li>
+          <li>What would you tell your younger self?</li>
+          <li>What makes a good friend?</li>
+        </ul>
+      </div>
+    </div>
+
     <dl class="contents">
       <div><dt>Your profile</dt><dd>Your principles, your goals and a message to yourself in five years.</dd></div>
       <div><dt>Map to track</dt><dd>Mark every place, coloured by what happened there.</dd></div>
@@ -130,8 +162,9 @@
   </section>
 
   <!-- HOW -->
-  <section class="how" aria-labelledby="howTitle">
+  <section class="how" id="how" aria-labelledby="howTitle">
     <h2 class="display" id="howTitle">How to use it</h2>
+    <svg class="how-path" viewBox="0 0 100 600" preserveAspectRatio="none" aria-hidden="true"><path d="M2.4 18 C 2.4 73, 52.3 63, 52.3 118 C 52.3 173, 2.4 163, 2.4 218 C 2.4 273, 52.3 263, 52.3 318 C 52.3 373, 2.4 363, 2.4 418 C 2.4 473, 52.3 463, 52.3 518" /></svg>
     <ol class="steps">
       <li><h3>Share the purpose</h3><p>Tell them what the journal is and why you’re collecting.</p></li>
       <li><h3>Pick a questionnaire</h3><p>Choose one, let them choose, or write your own.</p></li>
@@ -140,6 +173,22 @@
       <li><h3>Invite them further</h3><p>Ask for a hidden gem or a drawing too.</p></li>
       <li><h3>Keep going</h3><p>No rush. The book grows one person at a time.</p></li>
     </ol>
+  </section>
+
+  <!-- COLLECTED WISDOM -->
+  <!-- PHOTOS: save your photos as images/wisdom-1.jpg … images/wisdom-6.jpg
+       and write a short caption into each <figcaption>. -->
+  <section class="collected" id="collected">
+    <h2 class="display">Collected wisdom</h2>
+    <p class="lead">Pages from my own journal, filled in by people I met along the way.</p>
+    <div class="wall">
+      <figure class="polaroid"><img src="images/wisdom-1.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')"><figcaption></figcaption></figure>
+      <figure class="polaroid"><img src="images/wisdom-2.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')"><figcaption></figcaption></figure>
+      <figure class="polaroid"><img src="images/wisdom-3.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')"><figcaption></figcaption></figure>
+      <figure class="polaroid"><img src="images/wisdom-4.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')"><figcaption></figcaption></figure>
+      <figure class="polaroid"><img src="images/wisdom-5.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')"><figcaption></figcaption></figure>
+      <figure class="polaroid"><img src="images/wisdom-6.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')"><figcaption></figcaption></figure>
+    </div>
   </section>
 
   <!-- STORY -->
@@ -174,6 +223,11 @@
   <p class="wordmark">Wander Wisdom</p>
   <p>Along the way, it’s the people we meet who make the greatest impact.</p>
   <p class="footer-small">© 2025 Anna Mussotter</p>
+  <nav class="footer-links" aria-label="Legal">
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+    <a href="widerruf.html">Widerrufsbelehrung</a>
+  </nav>
 </footer>
 
 <script src="script.js"></script>

@@ -1,22 +1,49 @@
 # Wander Wisdom
 
-Website for the Wander Wisdom travel journal by Anna Mussotter.
-Plain HTML, CSS and JavaScript. No build step. Open `index.html` or deploy the folder to Vercel/Netlify as a static site.
+Landing page for **Wander Wisdom**, the co-creation travel journal by Anna Mussotter.
+Plain HTML, CSS and JavaScript: no build step, no cookies, fonts are self-hosted.
 
 ## Files
 
-- `index.html`: page content (map, idea, inside the book, how to use it, story, launch section)
-- `styles.css`: black-and-white styling based on the book (Anton, Jost, Nanum Pen Script from Google Fonts)
-- `script.js`: the interactive map. **The people on the map are listed at the top of this file.**
-- `images/`: pages rendered from the printed book
-- `wander-wisdom-book/`: the book's full text (`BOOK.md`) and style reference pages
+| File | What it is |
+|---|---|
+| `index.html` | All text on the page |
+| `script.js` | The people on the map (`PEOPLE` at the top), the book intro, the journal card |
+| `styles.css` | Colours, fonts and layout |
+| `images/` | Book pages and **your photos** (see below) |
+| `assets/fonts/` | Self-hosted fonts (no Google Fonts requests, better for GDPR) |
+| `impressum.html`, `datenschutz.html`, `widerruf.html` | Legal placeholder pages, **fill in before going live** |
+| `DESIGN.md` | Design system (for Stitch) |
+| `wander-wisdom-book/` | Book text (`BOOK.md`) and original page images |
 
-## Replacing the example entries
+## Add your photos
 
-The five entries in `PEOPLE` in `script.js` are examples. For each real entry (with the person's permission), fill in place, date, question, answer, first name and hometown, and set `example: false`. The "Example entry" badge disappears automatically. Also remove the line "These five entries are examples…" in `index.html` when all entries are real.
+Upload them into the `images/` folder with exactly these names (JPG):
 
-`x` and `y` are positions on the 1000×500 map (Natural Earth projection). Rough guide: x = 500 is Africa/Europe's longitude 0°, Australia is x ≈ 790–890, the Americas x ≈ 180–380. Easiest: ask Claude Code "add a person in <city> to the map".
+| File name | Where it appears |
+|---|---|
+| `anna-with-journal.jpg` | "The idea": you holding the book |
+| `wisdom-1.jpg` … `wisdom-6.jpg` | "Collected wisdom": photos of entries and moments from your travels |
 
-## Selling
+Portrait photos (4:5) look best. Until a photo exists, the frame shows "photo coming soon".
+For the collected-wisdom photos, write a short caption into the matching `<figcaption>`
+in `index.html` (search for `wisdom-1.jpg`). Only show entries with the writer's permission.
 
-The launch section links to Instagram for now. When the shop is ready, replace the link of the "Follow the launch on Instagram" button in `index.html` with a Stripe Payment Link or Gumroad/Etsy product link, and add the price to the text above it.
+## Replace the example entries on the map
+
+Open `script.js`. Each person in `PEOPLE` has a place, date, map position (`x`, `y`),
+question, answer, name and hometown. Set `example: false` for real entries.
+
+## Run it locally
+
+```
+python3 -m http.server 8000
+```
+
+Then open http://localhost:8000.
+
+## Deploy on Vercel
+
+1. vercel.com → sign in with GitHub → **Add New → Project**.
+2. Pick the `Wander-wisdom-` repository. Framework preset: **Other**. No build command.
+3. **Deploy**. Every push updates the site.
