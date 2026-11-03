@@ -414,13 +414,16 @@ p, h1, h2, h3, ul, ol, dl, dd, figure, blockquote { margin: 0; }
 
 /* The cover, rebuilt in CSS */
 .book { width: min(340px, 72vw); margin-inline: auto; perspective: 1200px; }
-.book-cover {
+/* shared cover artwork (product block + intro) */
+.cover-art {
   container-type: size;
-  aspect-ratio: 1 / 1.414;
-  position: relative;
   display: flex; align-items: flex-end; justify-content: center; gap: 4cqw;
   padding: 7cqh 8cqw 5cqh;
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.09), rgba(0, 0, 0, 0) 6%), var(--paper);
+}
+.book-cover {
+  aspect-ratio: 1 / 1.414;
+  position: relative;
   border: 1px solid var(--grey-1);
   border-radius: 2px 5px 5px 2px;
   box-shadow: 0 40px 60px -30px rgba(0, 0, 0, 0.45), 0 2px 4px rgba(0, 0, 0, 0.06);
@@ -460,6 +463,69 @@ p, h1, h2, h3, ul, ol, dl, dd, figure, blockquote { margin: 0; }
 .foot-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-top: 1rem; }
 
 /* =====================================================================
+   INTRO – the book opens, then we dive into the first page
+   ===================================================================== */
+.intro-screen { display: none; }
+html.intro body { overflow: hidden; }
+html.intro .intro-screen {
+  position: fixed; inset: 0; z-index: 100;
+  display: grid; place-items: center;
+  background: var(--night);
+  perspective: 1800px;
+}
+.intro-book {
+  --bw: min(40vw, calc(66svh / 1.414));
+  position: relative;
+  width: var(--bw); height: calc(var(--bw) * 1.414);
+  transform-style: preserve-3d;
+  transition: transform 1.3s cubic-bezier(0.6, 0.05, 0.25, 1);
+  animation: book-in 0.7s ease-out backwards;
+}
+@keyframes book-in { from { opacity: 0; transform: translateY(28px) scale(0.94); } }
+.intro-page {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 14%;
+  background: var(--paper) var(--dotgrid) 0 0 / 14px 14px;
+  color: var(--black);
+  border-radius: 2px 4px 4px 2px;
+  box-shadow: 0 40px 70px -30px rgba(0, 0, 0, 0.7);
+}
+.intro-quote { font-style: italic; font-size: calc(var(--bw) * 0.074); line-height: 1.3; }
+.intro-by { margin-top: 12%; font-size: calc(var(--bw) * 0.045); color: var(--grey-3); }
+.intro-by span {
+  font-family: "Caveat", cursive; font-size: 2em; color: #1d1d1d;
+  display: inline-block; min-width: 50%; border-bottom: 1px solid var(--grey-2); padding-left: 0.2em;
+}
+.intro-cover {
+  position: absolute; inset: 0;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform 1.3s cubic-bezier(0.6, 0.05, 0.25, 1);
+}
+.intro-front, .intro-back {
+  position: absolute; inset: 0;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  border-radius: 2px 5px 5px 2px;
+}
+.intro-front { box-shadow: 0 40px 70px -30px rgba(0, 0, 0, 0.7); }
+.intro-back { transform: rotateY(180deg); background: linear-gradient(270deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0) 10%), #f1f0ee; }
+
+.intro-screen.is-open .intro-book { transform: translateX(calc(var(--bw) / 2)); }
+.intro-screen.is-open .intro-cover { transform: rotateY(-180deg); }
+.intro-screen.is-leaving { opacity: 0; transition: opacity 0.7s ease 0.25s; }
+.intro-screen.is-leaving .intro-book {
+  transform: translateX(calc(var(--bw) / 2)) scale(2.6);
+  transition: transform 0.95s cubic-bezier(0.55, 0, 0.75, 0.2);
+}
+.intro-skip {
+  position: absolute; right: var(--gutter); bottom: max(1.25rem, env(safe-area-inset-bottom));
+  min-height: 44px; padding: 0.5rem 0.25rem; border: 0; background: none;
+  color: rgba(255, 255, 255, 0.7); font-size: 0.95rem; text-decoration: underline; text-underline-offset: 0.25em;
+}
+.intro-skip:hover { color: #fff; }
+
+/* =====================================================================
    LEGAL PAGES
    ===================================================================== */
 .legal { max-width: 46rem; margin: 0 auto; padding: 6rem var(--gutter) 5rem; }
@@ -482,6 +548,7 @@ p, h1, h2, h3, ul, ol, dl, dd, figure, blockquote { margin: 0; }
 @media (max-width: 720px) {
   body { font-size: 1.0625rem; }
   .bar-nav a:not(.bar-order) { display: none; }
+  .intro-book { --bw: min(44vw, calc(60svh / 1.414)); }
   .scroll-cue { display: none; }
   .hero-copy { bottom: max(1.5rem, env(safe-area-inset-bottom)); }
   .hero h1 { font-size: clamp(2.5rem, 12.5vw, 4rem); }

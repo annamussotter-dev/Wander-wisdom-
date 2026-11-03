@@ -13,8 +13,30 @@
   <link rel="preload" href="assets/fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/jost-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    // Show the book-opening intro only when JavaScript runs and motion is welcome.
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("intro");
+  </script>
 </head>
 <body>
+  <!-- ============ INTRO: the book opens ============ -->
+  <div class="intro-screen" id="intro" aria-hidden="true">
+    <div class="intro-book" id="introBook">
+      <div class="intro-page">
+        <p class="intro-quote">Along the way, it's the people we meet who make the greatest impact.</p>
+        <p class="intro-by">Collected wisdom by: <span>Anna</span></p>
+      </div>
+      <div class="intro-cover">
+        <div class="intro-front cover-art">
+          <span class="book-title">Wander<br />Wisdom</span>
+          <span class="book-tag">Unlock the potential of your everyday encounters.</span>
+        </div>
+        <div class="intro-back"></div>
+      </div>
+    </div>
+    <button class="intro-skip" id="introSkip" type="button">Skip intro</button>
+  </div>
+
   <a class="skip-link" href="#story">Skip the map</a>
 
   <header class="bar">
@@ -159,7 +181,7 @@
 
       <div class="product">
         <div class="book" role="img" aria-label="The Wander Wisdom cover">
-          <div class="book-cover">
+          <div class="book-cover cover-art">
             <span class="book-title">Wander<br />Wisdom</span>
             <span class="book-tag">Unlock the potential of your everyday encounters.</span>
           </div>

@@ -235,13 +235,35 @@ const PROMPTS = [
   const len = routeMask.getTotalLength();
   routeMask.style.strokeDasharray = `${len} ${len}`;
   routeMask.style.strokeDashoffset = reduceMotion ? 0 : len;
-  requestAnimationFrame(() => requestAnimationFrame(() => {
+  const startHero = () => requestAnimationFrame(() => requestAnimationFrame(() => {
     if (!reduceMotion) {
       routeMask.style.transition = `stroke-dashoffset ${DRAW}ms cubic-bezier(.45,.05,.35,1) 300ms`;
       routeMask.style.strokeDashoffset = 0;
     }
     hero.classList.add("is-ready");
   }));
+
+  // ---------- Intro: the book opens, then the map starts drawing ----------
+  const intro = $("#intro");
+  if (document.documentElement.classList.contains("intro")) {
+    const timers = [];
+    let heroStarted = false;
+    const beginHero = () => { if (!heroStarted) { heroStarted = true; startHero(); } };
+    const finish = () => {
+      timers.forEach(clearTimeout);
+      document.documentElement.classList.remove("intro");
+      intro.remove();
+      beginHero();
+    };
+    timers.push(setTimeout(() => intro.classList.add("is-open"), 1000));
+    timers.push(setTimeout(() => { intro.classList.add("is-leaving"); beginHero(); }, 2900));
+    timers.push(setTimeout(finish, 3900));
+    $("#introSkip").addEventListener("click", finish);
+    document.addEventListener("keydown", (ev) => { if (ev.key === "Escape" && intro.isConnected) finish(); });
+  } else {
+    intro.remove();
+    startHero();
+  }
 
   let resizeTimer;
   window.addEventListener("resize", () => {
