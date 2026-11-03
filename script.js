@@ -127,8 +127,47 @@ function startMap() {
   routeMask.style.strokeDashoffset = "0";
   setTimeout(() => map.classList.add("is-live"), 1900);
 }
-if (document.fonts && document.fonts.ready) document.fonts.ready.then(startMap);
-else startMap();
+/* --- intro: the book opens, then the map appears --- */
+const intro = document.getElementById("intro");
+let introDone = false;
+const timers = [];
+
+function finishIntro() {
+  if (introDone) return;
+  introDone = true;
+  timers.forEach(clearTimeout);
+  intro.classList.add("is-open", "is-zoom");
+  document.body.classList.remove("intro-on");
+  try { sessionStorage.setItem("ww-intro-seen", "1"); } catch (e) {}
+  setTimeout(() => { intro.hidden = true; }, 1100);
+  setTimeout(startMap, 500);
+}
+
+function playIntro() {
+  let seen = false;
+  try { seen = sessionStorage.getItem("ww-intro-seen") === "1"; } catch (e) {}
+  if (reduceMotion || seen) {
+    intro.hidden = true;
+    introDone = true;
+    startMap();
+    return;
+  }
+  document.body.classList.add("intro-on");
+  timers.push(setTimeout(() => intro.classList.add("is-in"), 80));
+  timers.push(setTimeout(() => intro.classList.add("is-open"), 1000));
+  timers.push(setTimeout(finishIntro, 3300));
+  intro.addEventListener("click", finishIntro);
+  document.addEventListener("keydown", (e) => { if (!introDone && e.key === "Escape") finishIntro(); });
+}
+
+const coverImg = intro.querySelector(".cover-front img");
+const whenReady = (fn) => {
+  let started = false;
+  const go = () => { if (!started) { started = true; fn(); } };
+  if (coverImg.complete) go(); else coverImg.addEventListener("load", go);
+  setTimeout(go, 1200);
+};
+whenReady(playIntro);
 
 /* --- journal card --- */
 function open(i, trigger) {
