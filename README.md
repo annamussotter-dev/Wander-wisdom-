@@ -1,48 +1,22 @@
 # Wander Wisdom
 
-A single-page website for selling the Wander Wisdom travel journal. Plain HTML/CSS/JS — no build step, no dependencies.
+Website for the Wander Wisdom travel journal by Anna Mussotter.
+Plain HTML, CSS and JavaScript. No build step. Open `index.html` or deploy the folder to Vercel/Netlify as a static site.
 
 ## Files
 
-- `index.html` — page content and structure
-- `styles.css` — all styling
-- `script.js` — mobile nav, FAQ, email signup toast, and buy-button wiring
+- `index.html`: page content (map, idea, inside the book, how to use it, story, launch section)
+- `styles.css`: black-and-white styling based on the book (Anton, Jost, Nanum Pen Script from Google Fonts)
+- `script.js`: the interactive map. **The people on the map are listed at the top of this file.**
+- `images/`: pages rendered from the printed book
+- `wander-wisdom-book/`: the book's full text (`BOOK.md`) and style reference pages
 
-## Running locally
+## Replacing the example entries
 
-Just open `index.html` in a browser, or serve the folder:
+The five entries in `PEOPLE` in `script.js` are examples. For each real entry (with the person's permission), fill in place, date, question, answer, first name and hometown, and set `example: false`. The "Example entry" badge disappears automatically. Also remove the line "These five entries are examples…" in `index.html` when all entries are real.
 
-```
-python3 -m http.server 8000
-```
+`x` and `y` are positions on the 1000×500 map (Natural Earth projection). Rough guide: x = 500 is Africa/Europe's longitude 0°, Australia is x ≈ 790–890, the Americas x ≈ 180–380. Easiest: ask Claude Code "add a person in <city> to the map".
 
-then visit `http://localhost:8000`.
+## Selling
 
-## Connecting real checkout
-
-Buy buttons currently show a "checkout not connected" message. To accept real payments without a backend:
-
-1. Create a [Stripe Payment Link](https://dashboard.stripe.com/payment-links) or a [Gumroad](https://gumroad.com) product for each item (Digital Edition, Printed Journal, Gift Set).
-2. Open `script.js` and fill in the `CHECKOUT_LINKS` object with those URLs:
-
-   ```js
-   const CHECKOUT_LINKS = {
-     "Wander Wisdom — Digital Edition": "https://buy.stripe.com/xxxxx",
-     "Wander Wisdom — Printed Journal": "https://buy.stripe.com/yyyyy",
-     "Wander Wisdom — Gift Set": "https://buy.stripe.com/zzzzz",
-   };
-   ```
-
-3. That's it — the buttons will navigate straight to checkout.
-
-The email signup form currently only shows a confirmation toast. To actually collect emails, connect it to a service like Mailchimp, ConvertKit, or Buttondown (they each provide a form action URL you can drop into `signupForm` in `index.html`).
-
-## Customizing
-
-- Update copy, prices, and images directly in `index.html`.
-- Colors and fonts are defined as CSS variables at the top of `styles.css` (`:root`).
-- The journal cover and about-section graphics are inline SVG — swap in real product photos by replacing the `.hero-art` / `.about-art` markup with `<img>` tags.
-
-## Deploying
-
-Any static host works — GitHub Pages, Netlify, Vercel, or Cloudflare Pages. For GitHub Pages: push this repo, then enable Pages in the repo settings pointing at the root of the default branch.
+The launch section links to Instagram for now. When the shop is ready, replace the link of the "Follow the launch on Instagram" button in `index.html` with a Stripe Payment Link or Gumroad/Etsy product link, and add the price to the text above it.
