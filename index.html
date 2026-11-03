@@ -1,244 +1,235 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Wander Wisdom – the travel journal the people you meet write in</title>
-  <meta name="description" content="Wander Wisdom is a printed travel journal for co-creation: the people you meet on your travels write in it – their advice, lessons and perspectives. A5 softcover, 88 pages, by Anna Mussotter." />
-  <meta name="theme-color" content="#ffffff" />
-  <meta property="og:title" content="Wander Wisdom" />
-  <meta property="og:description" content="Unlock the potential of your everyday encounters. A travel journal the people you meet write in." />
-  <meta property="og:image" content="assets/book/cover.webp" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fff'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23ff5a1f'/%3E%3C/svg%3E" />
-  <link rel="preload" href="assets/fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="assets/fonts/jost-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="styles.css" />
-  <script>
-    // Show the book-opening intro only when JavaScript runs and motion is welcome.
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("intro");
-  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wander Wisdom — a journal written by the people you meet</title>
+  <meta name="description" content="Wander Wisdom is a travel journal you hand to the people you meet. They write their advice, lessons and hidden gems into your book.">
+  <link rel="preload" href="assets/fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/jost-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/nanum-pen-script-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- ============ INTRO: the book opens ============ -->
-  <div class="intro-screen" id="intro" aria-hidden="true">
-    <div class="intro-book" id="introBook">
-      <div class="intro-page">
-        <p class="intro-quote">Along the way, it's the people we meet who make the greatest impact.</p>
-        <p class="intro-by">Collected wisdom by: <span>Anna</span></p>
-      </div>
-      <div class="intro-cover">
-        <div class="intro-front cover-art">
-          <span class="book-title">Wander<br />Wisdom</span>
-          <span class="book-tag">Unlock the potential of your everyday encounters.</span>
-        </div>
-        <div class="intro-back"></div>
-      </div>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="intro" id="intro">
+  <div class="book" aria-hidden="true">
+    <div class="book-page">
+      <svg class="book-path" viewBox="0 0 200 280" preserveAspectRatio="none"><path d="M30 240 C 60 180, 150 200, 120 130 S 60 60, 170 40" /></svg>
+      <p>Along the way,<br>it’s the people we meet<br>who make the greatest impact</p>
     </div>
-    <button class="intro-skip" id="introSkip" type="button">Skip intro</button>
+    <div class="book-cover">
+      <div class="cover-front"><img src="images/cover.webp" alt="" width="650" height="910"></div>
+      <div class="cover-back"><p>Collected wisdom by:</p><span></span></div>
+    </div>
   </div>
+  <button class="intro-skip" type="button">Skip intro</button>
+</div>
 
-  <a class="skip-link" href="#story">Skip the map</a>
+<header class="nav">
+  <a class="wordmark" href="#top">Wander Wisdom</a>
+  <nav aria-label="Main">
+    <a href="#idea">The idea</a>
+    <a href="#inside">Inside the book</a>
+    <a href="#collected">Collected wisdom</a>
+    <a href="#story">Story</a>
+    <a href="#get" class="nav-cta">Get the journal</a>
+  </nav>
+</header>
 
-  <header class="bar">
-    <a class="wordmark" href="#top" aria-label="Wander Wisdom, back to the map">Wander Wisdom</a>
-    <nav class="bar-nav" aria-label="Main">
-      <a href="#story">Story</a>
-      <a href="#inside">Inside the book</a>
-      <a class="bar-order" href="#order">Order</a>
-    </nav>
-  </header>
+<main id="main">
 
-  <main>
-    <!-- ============ HERO: the map of encounters ============ -->
-    <section class="hero" data-tone="light" id="top" aria-label="A map of people met while travelling">
-      <svg class="map map-paper" id="heroMap" aria-hidden="true" focusable="false">
+  <!-- HERO: map of wisdom -->
+  <section class="hero" id="top" aria-label="Map of people and their wisdom">
+    <div class="map-wrap">
+      <svg class="map" viewBox="0 0 1000 500" role="img" aria-labelledby="mapTitle">
+        <title id="mapTitle">World map with the places where people wrote in the journal</title>
         <defs>
-          <mask id="routeReveal" maskUnits="userSpaceOnUse">
-            <path class="route-mask" id="routeMask" />
+          <mask id="routeReveal">
+            <path class="route-mask" d="" />
           </mask>
         </defs>
-        <path class="land" id="heroLand" />
-        <path class="route" id="route" mask="url(#routeReveal)" />
+        <path class="land" d="M356 20h0M364 20h0M372 20h0M380 20h0M388 20h0M428 20h0M436 20h0M444 20h0M964 20h0M972 20h0M980 20h0M988 20h0M996 20h0M44 28h0M340 28h0M348 28h0M356 28h0M364 28h0M372 28h0M380 28h0M388 28h0M396 28h0M404 28h0M412 28h0M420 28h0M428 28h0M436 28h0M444 28h0M452 28h0M460 28h0M524 28h0M532 28h0M540 28h0M684 28h0M956 28h0M964 28h0M988 28h0M996 28h0M4 36h0M12 36h0M20 36h0M28 36h0M36 36h0M92 36h0M292 36h0M324 36h0M332 36h0M340 36h0M348 36h0M396 36h0M404 36h0M412 36h0M420 36h0M428 36h0M436 36h0M444 36h0M452 36h0M460 36h0M604 36h0M660 36h0M668 36h0M676 36h0M684 36h0M692 36h0M700 36h0M756 36h0M956 36h0M988 36h0M996 36h0M4 44h0M12 44h0M20 44h0M28 44h0M36 44h0M44 44h0M52 44h0M60 44h0M68 44h0M84 44h0M92 44h0M100 44h0M268 44h0M276 44h0M284 44h0M292 44h0M300 44h0M332 44h0M340 44h0M348 44h0M356 44h0M396 44h0M404 44h0M412 44h0M420 44h0M428 44h0M436 44h0M444 44h0M452 44h0M604 44h0M636 44h0M652 44h0M660 44h0M668 44h0M676 44h0M684 44h0M692 44h0M700 44h0M708 44h0M716 44h0M724 44h0M732 44h0M740 44h0M764 44h0M772 44h0M780 44h0M844 44h0M964 44h0M972 44h0M980 44h0M996 44h0M4 52h0M12 52h0M20 52h0M28 52h0M36 52h0M44 52h0M52 52h0M60 52h0M68 52h0M76 52h0M84 52h0M92 52h0M100 52h0M108 52h0M116 52h0M124 52h0M132 52h0M140 52h0M148 52h0M180 52h0M188 52h0M196 52h0M204 52h0M212 52h0M220 52h0M228 52h0M236 52h0M244 52h0M252 52h0M260 52h0M268 52h0M276 52h0M292 52h0M308 52h0M316 52h0M324 52h0M332 52h0M356 52h0M364 52h0M404 52h0M412 52h0M420 52h0M428 52h0M436 52h0M532 52h0M540 52h0M548 52h0M556 52h0M564 52h0M572 52h0M588 52h0M604 52h0M612 52h0M620 52h0M628 52h0M636 52h0M644 52h0M652 52h0M660 52h0M668 52h0M676 52h0M684 52h0M692 52h0M700 52h0M708 52h0M716 52h0M724 52h0M732 52h0M740 52h0M748 52h0M756 52h0M764 52h0M772 52h0M780 52h0M788 52h0M796 52h0M804 52h0M812 52h0M820 52h0M828 52h0M836 52h0M844 52h0M852 52h0M884 52h0M892 52h0M900 52h0M908 52h0M916 52h0M924 52h0M932 52h0M940 52h0M948 52h0M956 52h0M964 52h0M972 52h0M980 52h0M996 52h0M4 60h0M12 60h0M20 60h0M28 60h0M36 60h0M44 60h0M52 60h0M60 60h0M68 60h0M76 60h0M84 60h0M92 60h0M100 60h0M108 60h0M116 60h0M124 60h0M132 60h0M148 60h0M164 60h0M172 60h0M180 60h0M188 60h0M196 60h0M204 60h0M212 60h0M220 60h0M228 60h0M236 60h0M244 60h0M252 60h0M260 60h0M268 60h0M276 60h0M284 60h0M292 60h0M300 60h0M308 60h0M316 60h0M324 60h0M348 60h0M356 60h0M364 60h0M396 60h0M404 60h0M412 60h0M460 60h0M468 60h0M524 60h0M532 60h0M540 60h0M556 60h0M564 60h0M588 60h0M596 60h0M604 60h0M612 60h0M620 60h0M628 60h0M636 60h0M644 60h0M652 60h0M660 60h0M668 60h0M676 60h0M684 60h0M692 60h0M700 60h0M708 60h0M716 60h0M724 60h0M732 60h0M740 60h0M748 60h0M756 60h0M764 60h0M772 60h0M780 60h0M788 60h0M796 60h0M804 60h0M812 60h0M820 60h0M828 60h0M836 60h0M844 60h0M852 60h0M860 60h0M876 60h0M892 60h0M900 60h0M908 60h0M916 60h0M924 60h0M932 60h0M940 60h0M948 60h0M956 60h0M964 60h0M972 60h0M980 60h0M988 60h0M996 60h0M4 68h0M12 68h0M20 68h0M28 68h0M36 68h0M44 68h0M52 68h0M60 68h0M68 68h0M76 68h0M84 68h0M92 68h0M100 68h0M108 68h0M116 68h0M164 68h0M172 68h0M180 68h0M188 68h0M196 68h0M204 68h0M212 68h0M220 68h0M228 68h0M236 68h0M244 68h0M252 68h0M260 68h0M268 68h0M276 68h0M284 68h0M292 68h0M300 68h0M340 68h0M348 68h0M404 68h0M412 68h0M516 68h0M524 68h0M532 68h0M548 68h0M556 68h0M564 68h0M572 68h0M580 68h0M588 68h0M596 68h0M604 68h0M612 68h0M620 68h0M628 68h0M636 68h0M644 68h0M652 68h0M660 68h0M668 68h0M676 68h0M684 68h0M692 68h0M700 68h0M708 68h0M716 68h0M724 68h0M732 68h0M740 68h0M748 68h0M756 68h0M764 68h0M772 68h0M780 68h0M788 68h0M796 68h0M804 68h0M812 68h0M820 68h0M828 68h0M836 68h0M844 68h0M852 68h0M860 68h0M908 68h0M916 68h0M924 68h0M932 68h0M940 68h0M948 68h0M956 68h0M964 68h0M972 68h0M980 68h0M988 68h0M996 68h0M4 76h0M12 76h0M20 76h0M28 76h0M36 76h0M60 76h0M84 76h0M164 76h0M172 76h0M212 76h0M220 76h0M228 76h0M236 76h0M244 76h0M252 76h0M260 76h0M268 76h0M276 76h0M284 76h0M292 76h0M340 76h0M348 76h0M364 76h0M516 76h0M524 76h0M532 76h0M556 76h0M564 76h0M572 76h0M580 76h0M588 76h0M596 76h0M604 76h0M612 76h0M620 76h0M628 76h0M636 76h0M644 76h0M652 76h0M660 76h0M668 76h0M676 76h0M684 76h0M692 76h0M700 76h0M708 76h0M716 76h0M724 76h0M732 76h0M740 76h0M748 76h0M756 76h0M764 76h0M772 76h0M780 76h0M788 76h0M796 76h0M820 76h0M844 76h0M924 76h0M932 76h0M972 76h0M980 76h0M988 76h0M996 76h0M4 84h0M12 84h0M60 84h0M68 84h0M156 84h0M220 84h0M228 84h0M236 84h0M244 84h0M252 84h0M260 84h0M268 84h0M276 84h0M284 84h0M292 84h0M300 84h0M308 84h0M340 84h0M348 84h0M356 84h0M364 84h0M492 84h0M532 84h0M548 84h0M556 84h0M564 84h0M572 84h0M580 84h0M588 84h0M596 84h0M604 84h0M612 84h0M620 84h0M628 84h0M636 84h0M644 84h0M652 84h0M660 84h0M668 84h0M676 84h0M684 84h0M692 84h0M700 84h0M708 84h0M716 84h0M724 84h0M732 84h0M740 84h0M748 84h0M756 84h0M764 84h0M772 84h0M780 84h0M788 84h0M796 84h0M844 84h0M932 84h0M996 84h0M4 92h0M12 92h0M52 92h0M60 92h0M220 92h0M228 92h0M236 92h0M244 92h0M252 92h0M260 92h0M268 92h0M276 92h0M284 92h0M292 92h0M300 92h0M308 92h0M316 92h0M332 92h0M340 92h0M348 92h0M356 92h0M364 92h0M372 92h0M484 92h0M492 92h0M500 92h0M516 92h0M524 92h0M532 92h0M540 92h0M548 92h0M556 92h0M564 92h0M572 92h0M580 92h0M588 92h0M596 92h0M604 92h0M612 92h0M620 92h0M628 92h0M636 92h0M644 92h0M652 92h0M660 92h0M668 92h0M676 92h0M684 92h0M692 92h0M700 92h0M708 92h0M716 92h0M724 92h0M732 92h0M740 92h0M748 92h0M756 92h0M764 92h0M772 92h0M780 92h0M788 92h0M796 92h0M804 92h0M844 92h0M852 92h0M4 100h0M220 100h0M228 100h0M236 100h0M244 100h0M252 100h0M260 100h0M268 100h0M276 100h0M284 100h0M292 100h0M300 100h0M308 100h0M316 100h0M324 100h0M332 100h0M340 100h0M348 100h0M356 100h0M364 100h0M372 100h0M492 100h0M508 100h0M516 100h0M524 100h0M532 100h0M540 100h0M548 100h0M556 100h0M564 100h0M572 100h0M580 100h0M588 100h0M596 100h0M604 100h0M612 100h0M620 100h0M628 100h0M636 100h0M644 100h0M652 100h0M660 100h0M668 100h0M676 100h0M684 100h0M692 100h0M700 100h0M708 100h0M716 100h0M724 100h0M732 100h0M740 100h0M748 100h0M756 100h0M764 100h0M772 100h0M780 100h0M788 100h0M796 100h0M804 100h0M812 100h0M820 100h0M220 108h0M228 108h0M236 108h0M244 108h0M252 108h0M260 108h0M268 108h0M276 108h0M284 108h0M292 108h0M300 108h0M308 108h0M316 108h0M324 108h0M332 108h0M340 108h0M348 108h0M372 108h0M492 108h0M500 108h0M508 108h0M516 108h0M524 108h0M532 108h0M540 108h0M548 108h0M556 108h0M564 108h0M572 108h0M580 108h0M588 108h0M596 108h0M604 108h0M612 108h0M620 108h0M628 108h0M636 108h0M644 108h0M652 108h0M660 108h0M668 108h0M676 108h0M684 108h0M692 108h0M700 108h0M708 108h0M716 108h0M724 108h0M732 108h0M740 108h0M748 108h0M756 108h0M764 108h0M772 108h0M780 108h0M788 108h0M796 108h0M804 108h0M812 108h0M220 116h0M228 116h0M236 116h0M244 116h0M252 116h0M260 116h0M268 116h0M276 116h0M284 116h0M292 116h0M300 116h0M308 116h0M316 116h0M324 116h0M332 116h0M340 116h0M356 116h0M500 116h0M508 116h0M516 116h0M524 116h0M532 116h0M540 116h0M548 116h0M556 116h0M564 116h0M580 116h0M588 116h0M596 116h0M604 116h0M620 116h0M628 116h0M636 116h0M644 116h0M652 116h0M660 116h0M668 116h0M676 116h0M684 116h0M692 116h0M700 116h0M708 116h0M716 116h0M724 116h0M732 116h0M740 116h0M748 116h0M756 116h0M764 116h0M772 116h0M780 116h0M788 116h0M796 116h0M804 116h0M812 116h0M828 116h0M212 124h0M220 124h0M228 124h0M236 124h0M244 124h0M252 124h0M260 124h0M268 124h0M276 124h0M284 124h0M292 124h0M300 124h0M308 124h0M316 124h0M324 124h0M332 124h0M484 124h0M492 124h0M500 124h0M532 124h0M548 124h0M556 124h0M564 124h0M604 124h0M612 124h0M628 124h0M636 124h0M644 124h0M652 124h0M660 124h0M668 124h0M676 124h0M684 124h0M692 124h0M700 124h0M708 124h0M716 124h0M724 124h0M732 124h0M740 124h0M748 124h0M756 124h0M764 124h0M772 124h0M780 124h0M788 124h0M796 124h0M804 124h0M828 124h0M212 132h0M220 132h0M228 132h0M236 132h0M244 132h0M252 132h0M260 132h0M268 132h0M276 132h0M284 132h0M292 132h0M300 132h0M308 132h0M316 132h0M324 132h0M484 132h0M492 132h0M548 132h0M564 132h0M572 132h0M580 132h0M588 132h0M596 132h0M604 132h0M612 132h0M628 132h0M636 132h0M644 132h0M652 132h0M660 132h0M668 132h0M676 132h0M684 132h0M692 132h0M700 132h0M708 132h0M716 132h0M724 132h0M732 132h0M740 132h0M748 132h0M756 132h0M764 132h0M772 132h0M780 132h0M788 132h0M796 132h0M836 132h0M212 140h0M220 140h0M228 140h0M236 140h0M244 140h0M252 140h0M260 140h0M268 140h0M276 140h0M284 140h0M292 140h0M300 140h0M308 140h0M316 140h0M492 140h0M516 140h0M524 140h0M572 140h0M580 140h0M588 140h0M596 140h0M604 140h0M612 140h0M620 140h0M636 140h0M644 140h0M652 140h0M660 140h0M668 140h0M676 140h0M684 140h0M692 140h0M700 140h0M708 140h0M716 140h0M724 140h0M732 140h0M740 140h0M748 140h0M756 140h0M764 140h0M772 140h0M780 140h0M788 140h0M804 140h0M828 140h0M836 140h0M212 148h0M220 148h0M228 148h0M236 148h0M244 148h0M252 148h0M260 148h0M268 148h0M276 148h0M284 148h0M292 148h0M300 148h0M308 148h0M484 148h0M492 148h0M500 148h0M508 148h0M516 148h0M524 148h0M588 148h0M596 148h0M604 148h0M612 148h0M620 148h0M628 148h0M636 148h0M644 148h0M652 148h0M660 148h0M668 148h0M676 148h0M684 148h0M692 148h0M700 148h0M708 148h0M716 148h0M724 148h0M732 148h0M740 148h0M748 148h0M756 148h0M764 148h0M772 148h0M780 148h0M788 148h0M820 148h0M828 148h0M228 156h0M236 156h0M244 156h0M252 156h0M260 156h0M268 156h0M276 156h0M284 156h0M292 156h0M300 156h0M484 156h0M492 156h0M500 156h0M508 156h0M516 156h0M524 156h0M532 156h0M556 156h0M564 156h0M588 156h0M596 156h0M604 156h0M612 156h0M620 156h0M628 156h0M636 156h0M644 156h0M652 156h0M660 156h0M668 156h0M676 156h0M684 156h0M692 156h0M700 156h0M708 156h0M716 156h0M724 156h0M732 156h0M740 156h0M748 156h0M756 156h0M764 156h0M772 156h0M780 156h0M788 156h0M796 156h0M820 156h0M220 164h0M228 164h0M236 164h0M244 164h0M252 164h0M260 164h0M300 164h0M476 164h0M484 164h0M492 164h0M500 164h0M508 164h0M516 164h0M524 164h0M532 164h0M540 164h0M548 164h0M556 164h0M564 164h0M572 164h0M580 164h0M588 164h0M596 164h0M604 164h0M612 164h0M628 164h0M636 164h0M644 164h0M652 164h0M660 164h0M668 164h0M676 164h0M684 164h0M692 164h0M700 164h0M708 164h0M716 164h0M724 164h0M732 164h0M740 164h0M748 164h0M756 164h0M764 164h0M772 164h0M780 164h0M788 164h0M796 164h0M236 172h0M244 172h0M252 172h0M300 172h0M468 172h0M476 172h0M484 172h0M492 172h0M500 172h0M508 172h0M516 172h0M524 172h0M532 172h0M540 172h0M548 172h0M556 172h0M564 172h0M572 172h0M580 172h0M596 172h0M604 172h0M612 172h0M620 172h0M644 172h0M652 172h0M660 172h0M668 172h0M676 172h0M684 172h0M692 172h0M700 172h0M708 172h0M716 172h0M724 172h0M732 172h0M740 172h0M748 172h0M756 172h0M764 172h0M772 172h0M780 172h0M788 172h0M796 172h0M236 180h0M244 180h0M252 180h0M460 180h0M468 180h0M476 180h0M484 180h0M492 180h0M500 180h0M508 180h0M516 180h0M524 180h0M532 180h0M540 180h0M548 180h0M556 180h0M564 180h0M572 180h0M580 180h0M588 180h0M604 180h0M612 180h0M620 180h0M628 180h0M636 180h0M644 180h0M676 180h0M684 180h0M692 180h0M700 180h0M708 180h0M716 180h0M724 180h0M732 180h0M740 180h0M748 180h0M756 180h0M764 180h0M772 180h0M780 180h0M788 180h0M236 188h0M244 188h0M252 188h0M276 188h0M308 188h0M460 188h0M468 188h0M476 188h0M484 188h0M492 188h0M500 188h0M508 188h0M516 188h0M524 188h0M532 188h0M540 188h0M548 188h0M556 188h0M564 188h0M572 188h0M580 188h0M588 188h0M604 188h0M612 188h0M620 188h0M628 188h0M636 188h0M644 188h0M684 188h0M692 188h0M700 188h0M708 188h0M716 188h0M732 188h0M740 188h0M748 188h0M756 188h0M764 188h0M244 196h0M252 196h0M260 196h0M268 196h0M276 196h0M316 196h0M332 196h0M460 196h0M468 196h0M476 196h0M484 196h0M492 196h0M500 196h0M508 196h0M516 196h0M524 196h0M532 196h0M540 196h0M548 196h0M556 196h0M564 196h0M572 196h0M580 196h0M588 196h0M596 196h0M612 196h0M620 196h0M628 196h0M636 196h0M692 196h0M700 196h0M708 196h0M740 196h0M748 196h0M756 196h0M764 196h0M268 204h0M276 204h0M284 204h0M460 204h0M468 204h0M476 204h0M484 204h0M492 204h0M500 204h0M508 204h0M516 204h0M524 204h0M532 204h0M540 204h0M548 204h0M556 204h0M564 204h0M572 204h0M580 204h0M588 204h0M596 204h0M612 204h0M620 204h0M628 204h0M692 204h0M700 204h0M748 204h0M756 204h0M764 204h0M772 204h0M284 212h0M460 212h0M468 212h0M476 212h0M484 212h0M492 212h0M500 212h0M508 212h0M516 212h0M524 212h0M532 212h0M540 212h0M548 212h0M556 212h0M564 212h0M572 212h0M580 212h0M588 212h0M596 212h0M604 212h0M612 212h0M692 212h0M700 212h0M764 212h0M772 212h0M284 220h0M308 220h0M316 220h0M324 220h0M332 220h0M340 220h0M468 220h0M476 220h0M484 220h0M492 220h0M500 220h0M508 220h0M516 220h0M524 220h0M532 220h0M540 220h0M548 220h0M556 220h0M564 220h0M572 220h0M580 220h0M588 220h0M596 220h0M604 220h0M612 220h0M620 220h0M628 220h0M700 220h0M772 220h0M804 220h0M308 228h0M316 228h0M324 228h0M332 228h0M340 228h0M348 228h0M468 228h0M476 228h0M484 228h0M492 228h0M500 228h0M508 228h0M516 228h0M524 228h0M532 228h0M540 228h0M548 228h0M556 228h0M564 228h0M572 228h0M580 228h0M588 228h0M596 228h0M604 228h0M612 228h0M620 228h0M708 228h0M756 228h0M820 228h0M308 236h0M316 236h0M324 236h0M332 236h0M340 236h0M348 236h0M356 236h0M364 236h0M516 236h0M524 236h0M532 236h0M540 236h0M548 236h0M556 236h0M564 236h0M572 236h0M580 236h0M588 236h0M596 236h0M604 236h0M612 236h0M620 236h0M748 236h0M764 236h0M796 236h0M300 244h0M308 244h0M316 244h0M324 244h0M332 244h0M340 244h0M348 244h0M356 244h0M364 244h0M532 244h0M540 244h0M548 244h0M556 244h0M564 244h0M572 244h0M580 244h0M588 244h0M596 244h0M604 244h0M612 244h0M756 244h0M764 244h0M788 244h0M796 244h0M828 244h0M300 252h0M308 252h0M316 252h0M324 252h0M332 252h0M340 252h0M348 252h0M356 252h0M364 252h0M372 252h0M524 252h0M532 252h0M540 252h0M548 252h0M556 252h0M564 252h0M572 252h0M580 252h0M588 252h0M596 252h0M604 252h0M764 252h0M788 252h0M796 252h0M300 260h0M308 260h0M316 260h0M324 260h0M332 260h0M340 260h0M348 260h0M356 260h0M364 260h0M372 260h0M380 260h0M388 260h0M396 260h0M532 260h0M540 260h0M548 260h0M556 260h0M564 260h0M572 260h0M580 260h0M588 260h0M596 260h0M764 260h0M788 260h0M796 260h0M812 260h0M828 260h0M844 260h0M852 260h0M860 260h0M300 268h0M308 268h0M316 268h0M324 268h0M332 268h0M340 268h0M348 268h0M356 268h0M364 268h0M372 268h0M380 268h0M388 268h0M396 268h0M404 268h0M532 268h0M540 268h0M548 268h0M556 268h0M564 268h0M572 268h0M580 268h0M588 268h0M596 268h0M772 268h0M844 268h0M860 268h0M868 268h0M876 268h0M884 268h0M300 276h0M308 276h0M316 276h0M324 276h0M332 276h0M340 276h0M348 276h0M356 276h0M364 276h0M372 276h0M380 276h0M388 276h0M396 276h0M404 276h0M540 276h0M548 276h0M556 276h0M564 276h0M572 276h0M580 276h0M588 276h0M596 276h0M812 276h0M820 276h0M860 276h0M876 276h0M308 284h0M316 284h0M324 284h0M332 284h0M340 284h0M348 284h0M356 284h0M364 284h0M372 284h0M380 284h0M388 284h0M396 284h0M404 284h0M540 284h0M548 284h0M556 284h0M564 284h0M572 284h0M580 284h0M588 284h0M596 284h0M308 292h0M316 292h0M324 292h0M332 292h0M340 292h0M348 292h0M356 292h0M364 292h0M372 292h0M380 292h0M388 292h0M396 292h0M532 292h0M540 292h0M548 292h0M556 292h0M564 292h0M572 292h0M580 292h0M588 292h0M596 292h0M836 292h0M844 292h0M860 292h0M324 300h0M332 300h0M340 300h0M348 300h0M356 300h0M364 300h0M372 300h0M380 300h0M388 300h0M396 300h0M532 300h0M540 300h0M548 300h0M556 300h0M564 300h0M572 300h0M580 300h0M588 300h0M596 300h0M620 300h0M820 300h0M828 300h0M836 300h0M844 300h0M860 300h0M868 300h0M324 308h0M332 308h0M340 308h0M348 308h0M356 308h0M364 308h0M372 308h0M380 308h0M388 308h0M396 308h0M540 308h0M548 308h0M556 308h0M564 308h0M572 308h0M580 308h0M588 308h0M612 308h0M620 308h0M812 308h0M820 308h0M828 308h0M836 308h0M844 308h0M852 308h0M860 308h0M868 308h0M332 316h0M340 316h0M348 316h0M356 316h0M364 316h0M372 316h0M380 316h0M388 316h0M396 316h0M540 316h0M548 316h0M556 316h0M564 316h0M572 316h0M580 316h0M588 316h0M612 316h0M620 316h0M788 316h0M796 316h0M804 316h0M812 316h0M820 316h0M828 316h0M836 316h0M844 316h0M852 316h0M860 316h0M868 316h0M876 316h0M332 324h0M340 324h0M348 324h0M356 324h0M364 324h0M372 324h0M380 324h0M540 324h0M548 324h0M556 324h0M564 324h0M572 324h0M580 324h0M612 324h0M788 324h0M796 324h0M804 324h0M812 324h0M820 324h0M828 324h0M836 324h0M844 324h0M852 324h0M860 324h0M868 324h0M876 324h0M332 332h0M340 332h0M348 332h0M356 332h0M364 332h0M372 332h0M540 332h0M548 332h0M556 332h0M564 332h0M572 332h0M580 332h0M788 332h0M796 332h0M804 332h0M812 332h0M820 332h0M828 332h0M836 332h0M844 332h0M852 332h0M860 332h0M868 332h0M876 332h0M332 340h0M340 340h0M348 340h0M356 340h0M364 340h0M372 340h0M548 340h0M556 340h0M564 340h0M572 340h0M788 340h0M796 340h0M804 340h0M812 340h0M820 340h0M828 340h0M836 340h0M844 340h0M852 340h0M860 340h0M868 340h0M332 348h0M340 348h0M348 348h0M356 348h0M364 348h0M372 348h0M548 348h0M556 348h0M564 348h0M788 348h0M796 348h0M828 348h0M836 348h0M844 348h0M852 348h0M860 348h0M868 348h0M52 356h0M332 356h0M340 356h0M348 356h0M356 356h0M836 356h0M844 356h0M852 356h0M860 356h0M60 364h0M332 364h0M340 364h0M348 364h0M356 364h0M924 364h0M332 372h0M340 372h0M60 380h0M332 380h0M340 380h0M348 380h0M900 380h0M60 388h0M332 388h0M340 388h0M332 396h0M340 396h0M340 404h0M348 412h0M356 412h0" />
+        <path class="route" d="" mask="url(#routeReveal)" />
+        <g class="people"></g>
       </svg>
-      <div class="markers" id="markers"></div>
+    </div>
 
-      <div class="hero-copy">
-        <h1>Unlock the potential of your everyday encounters.</h1>
-        <p class="hero-sub">Every dot is someone I met on the road, and what they wrote in my journal.</p>
-        <div class="hero-actions">
-          <button class="btn btn-ink" id="startJourney" type="button">Read the first wisdom</button>
-          <a class="link-quiet" href="#order">Order the journal</a>
-        </div>
-        <p class="hero-note">The five people on this map are examples. Real entries are on their way.</p>
+    <div class="hero-text">
+      <h1>Unlock the potential of your everyday encounters.</h1>
+      <p class="hero-sub">Every dot is a person who wrote in the journal. Tap one to read what they shared.</p>
+      <p class="example-note">These five entries are examples. Real pages are coming soon.</p>
+    </div>
+
+    <!-- journal card -->
+    <article class="card" id="card" aria-live="polite" hidden>
+      <button class="card-close" type="button" aria-label="Close">&times;</button>
+      <p class="card-example">Example entry</p>
+      <p class="card-meta"><span class="card-place"></span><span class="card-date"></span></p>
+      <h2 class="card-question"></h2>
+      <p class="card-answer"></p>
+      <div class="card-sign">
+        <p><span>Name</span> <strong class="card-name"></strong></p>
+        <p><span>Hometown</span> <strong class="card-home"></strong></p>
       </div>
+      <button class="card-next" type="button">Next wisdom →</button>
+    </article>
+  </section>
 
-      <aside class="entry" id="entry" role="dialog" aria-modal="false" aria-labelledby="entryQuestion" hidden>
-        <article class="page" id="entryPage">
-          <button class="entry-close" id="entryClose" type="button" aria-label="Close this page">×</button>
-          <p class="stamp" id="entryStamp">Example entry</p>
-          <p class="field field-line">
-            <span class="field-label">Location / date</span>
-            <span class="hand" id="entryPlace"></span>
-          </p>
-          <h2 class="entry-q" id="entryQuestion"></h2>
-          <p class="entry-a hand" id="entryAnswer"></p>
-          <div class="entry-who">
-            <p class="field"><span class="field-label">Name</span><span class="hand" id="entryName"></span></p>
-            <p class="field"><span class="field-label">Hometown</span><span class="hand" id="entryHome"></span></p>
-          </div>
-        </article>
-        <div class="entry-nav">
-          <button class="btn-text" id="entryPrev" type="button">Previous</button>
-          <span class="entry-count" id="entryCount" aria-live="polite"></span>
-          <button class="btn btn-ink" id="entryNext" type="button">Next wisdom →</button>
-        </div>
-      </aside>
-
-      <a class="scroll-cue" href="#story">The story behind the book</a>
-    </section>
-
-    <!-- ============ FOUNDER STORY ============ -->
-    <section class="story" data-tone="light" id="story">
-      <p class="story-lead">Along the way, it's the people we meet who make the greatest impact.</p>
-
-      <div class="story-grid">
-        <h2 class="display story-title">By Anna Mussotter</h2>
-        <div class="story-text">
-          <p class="story-sub">Wandering through life with curiosity &amp; passion.</p>
-          <p>Three years ago, I carried a blank notebook and asked people to share their best advice.</p>
-          <p>What started as a simple idea quickly grew bigger. People connected with the concept, opened up, and I realised how valuable and unique it is to connect that way.</p>
-          <p>That sparked an idea: while studying for graduation, I began designing Wander Wisdom.</p>
-          <p>Testing the first sample in Australia uncovered the most beautiful insights from the people I met, and led to unexpected, meaningful moments that shaped my travels.</p>
-          <blockquote class="story-quote">Today, that first notebook is the most valuable thing I own – and I hope this one becomes just as special for you.</blockquote>
-          <p class="story-sign">Est. 2025. Follow along on Instagram: <a href="https://www.instagram.com/anna_.mst/" rel="noopener" target="_blank">@Anna_.mst</a></p>
-        </div>
-      </div>
-
-      <div class="concept">
-        <p class="concept-quote">There's a hidden gem in everyone – you just have to find it.</p>
-        <div class="concept-text">
-          <p>In a fast-paced world, we often miss the chance to truly connect. Conversations stay on the surface, and the only things we bring home are photos and videos.</p>
-          <p>Wander Wisdom hands the pen to the people you meet. They answer questions that go deeper, in their own handwriting, and you come home with their advice, their lessons and their way of seeing the world.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ THE MAP SPREAD ============ -->
-    <figure class="spread" data-tone="light">
-      <div class="spread-book">
-        <img src="assets/book/map-left.webp" alt="Left page of the world map spread, with a colour key for marking places" width="650" height="910" loading="lazy" />
-        <img src="assets/book/map-right.webp" alt="Right page of the world map spread" width="650" height="910" loading="lazy" />
-      </div>
-      <figcaption>The map to track, pages 16 and 17. Mark every place in the colour that belongs to it.</figcaption>
+  <!-- IDEA -->
+  <section class="idea" id="idea">
+    <blockquote>
+      <p>There’s a hidden gem in everyone - you just have to find it.</p>
+    </blockquote>
+    <div class="idea-grid">
+    <!-- PHOTO: save your photo as images/anna-with-journal.jpg -->
+    <figure class="polaroid polaroid-anna">
+      <img src="images/anna-with-journal.jpg" alt="Anna Mussotter holding her Wander Wisdom journal" width="900" height="1125" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
+      <figcaption>Anna with the first Wander Wisdom</figcaption>
     </figure>
+    <div class="idea-body">
+      <p>On the road we meet people with their own stories and perspectives. Then we take a photo, say goodbye, and the conversation is gone.</p>
+      <p><strong>Wander Wisdom is a journal you hand to the people you meet.</strong> They write their answers to questions that cut through small talk: what life is about, a lesson that changed them, advice for people in their twenties. Page by page, your book becomes a collection of the wisdom you found along the way.</p>
+    </div>
+    </div>
+  </section>
 
-    <!-- ============ WHAT'S INSIDE ============ -->
-    <section class="inside" data-tone="light" id="inside">
-      <div class="inside-head">
-        <h2 class="display">What's inside</h2>
-        <p class="lead">An A5 softcover journal with 88 pages. You fill in the first part. The people you meet fill in the rest.</p>
+  <!-- INSIDE -->
+  <section class="inside" id="inside">
+    <h2 class="display">Inside the book</h2>
+    <p class="lead">88 pages, made to be filled by you and by everyone you meet.</p>
+
+    <div class="pages" tabindex="0" aria-label="Pages from the journal, scroll sideways">
+      <figure class="page">
+        <img src="images/cover.webp" alt="Cover of Wander Wisdom with the title in large black letters" width="650" height="910" loading="lazy">
+        <figcaption>The cover</figcaption>
+      </figure>
+      <figure class="page">
+        <img src="images/steps.webp" alt="Steps to your Wander Wisdom: profile, map, co-creation, doodle, inspiration" width="650" height="910" loading="lazy">
+        <figcaption>Steps to your Wander Wisdom</figcaption>
+      </figure>
+      <figure class="page">
+        <img src="images/profile.webp" alt="Profile page with fields for name, hometown and meaningful places" width="650" height="910" loading="lazy">
+        <figcaption>Your profile</figcaption>
+      </figure>
+      <figure class="page page-spread">
+        <img src="images/map-left.webp" alt="Left half of a world map to mark places" width="650" height="910" loading="lazy">
+        <img src="images/map-right.webp" alt="Right half of a world map" width="650" height="910" loading="lazy">
+        <figcaption>Map to track your encounters</figcaption>
+      </figure>
+      <figure class="page">
+        <img src="images/questionnaire.webp" alt="Questionnaire page on a dot grid with three questions" width="650" height="910" loading="lazy">
+        <figcaption>Seven questionnaires for others to fill in</figcaption>
+      </figure>
+      <figure class="page">
+        <img src="images/canvas.webp" alt="Canvas of emotions page asking how happiness feels" width="650" height="910" loading="lazy">
+        <figcaption>Canvas of emotions</figcaption>
+      </figure>
+    </div>
+
+    <div class="sample">
+      <figure class="sample-page">
+        <img src="images/questionnaire-35.webp" alt="Questionnaire on page 35: two important lessons you have learned from your travels, what brings you strength and joy for life, advice for people in their 20s, with space for name, hometown and socials" width="650" height="919" loading="lazy">
+      </figure>
+      <div class="sample-text">
+        <p class="hand-note">a page for someone you just met</p>
+        <h3 class="display">A questionnaire, up close</h3>
+        <p>Seven questionnaires, each with three questions that go beyond small talk. The person you meet writes their answers, then signs with their name, hometown and socials, so you can stay in touch.</p>
+        <p class="sample-label">Questions from the book</p>
+        <ul class="sample-list">
+          <li>Two important lessons you have learned from your travels?</li>
+          <li>What brings you strength and joy for life?</li>
+          <li>Advice for people in their 20s</li>
+          <li>Life is about…</li>
+          <li>What would you tell your younger self?</li>
+          <li>What makes a good friend?</li>
+        </ul>
       </div>
+    </div>
 
-      <div class="gallery">
-        <figure><img src="assets/book/cover.webp" alt="Cover: Wander Wisdom, unlock the potential of your everyday encounters" width="650" height="910" loading="lazy" /><figcaption>Cover</figcaption></figure>
-        <figure><img src="assets/book/steps.webp" alt="Steps to your Wander Wisdom" width="650" height="910" loading="lazy" /><figcaption>Steps</figcaption></figure>
-        <figure><img src="assets/book/profile.webp" alt="Your profile page with name, hometown and more" width="650" height="910" loading="lazy" /><figcaption>Your profile</figcaption></figure>
-        <figure><img src="assets/book/questionnaire.webp" alt="A questionnaire page: Life is about…" width="650" height="910" loading="lazy" /><figcaption>A questionnaire</figcaption></figure>
-        <figure><img src="wander-wisdom-book/page-20-20.png" alt="My path: how to use the questionnaires with others" width="355" height="500" loading="lazy" /><figcaption>My path</figcaption></figure>
-        <figure><img src="assets/book/canvas.webp" alt="Canvas of emotions: how does happiness feel to you?" width="650" height="910" loading="lazy" /><figcaption>Canvas of emotions</figcaption></figure>
-      </div>
+    <dl class="contents">
+      <div><dt>Your profile</dt><dd>Your principles, your goals and a message to yourself in five years.</dd></div>
+      <div><dt>Map to track</dt><dd>Mark every place, coloured by what happened there.</dd></div>
+      <div><dt>Questionnaires</dt><dd>Seven sets of three questions, written by the people you meet.</dd></div>
+      <div><dt>Quick connect</dt><dd>Short pages for when time is short but the connection still matters.</dd></div>
+      <div><dt>Hidden gems</dt><dd>Favourite places, artists and routes that others pass on to you.</dd></div>
+      <div><dt>Canvas of emotions</dt><dd>Drawings instead of words. Art crosses every language.</dd></div>
+      <div><dt>Doodle time</dt><dd>Sketches, stickers, tickets and whatever else you want to keep.</dd></div>
+      <div><dt>20 prompts</dt><dd>Ideas for your own questions when you want to go deeper.</dd></div>
+    </dl>
+  </section>
 
-      <dl class="chapters">
-        <div><dt>Your profile</dt><dd>Before anyone else writes in it, the book gets to know you: your hometown, the principles you live by, one fear, your goals, advice for your younger self and a message to your future self in five years.</dd></div>
-        <div><dt>Map to track</dt><dd>A world map to mark the places you've been and the people you met there.</dd></div>
-        <div><dt>Seven questionnaires</dt><dd>The heart of the book. Seven different questionnaires with three questions each, like <em>Life is about…</em>, <em>Advice for people in their 20s</em> or <em>What makes a good friend?</em> Every page has room for the writer's name, hometown and socials.</dd></div>
-        <div><dt>Quick connect</dt><dd>For when time is short but the connection still matters: three people, three short answers.</dd></div>
-        <div><dt>Your own pages</dt><dd>Everyone is unique. Write the questions only you would think of asking.</dd></div>
-        <div><dt>Hidden gems</dt><dd>The people you meet share their favourite places, activities, itineraries and artists. Your next trip, planned by locals and fellow travellers.</dd></div>
-        <div><dt>Canvas of emotions</dt><dd><em>How does happiness feel to you? What does it look like?</em> People answer with a drawing. Art is understood across every language and border.</dd></div>
-        <div><dt>Doodle time</dt><dd>Space for sketches, stickers, tickets and fleeting ideas.</dd></div>
-        <div><dt>20 prompts</dt><dd>Questions at the back of the book for when you want to go deeper.</dd></div>
-      </dl>
+  <!-- HOW -->
+  <section class="how" id="how" aria-labelledby="howTitle">
+    <h2 class="display" id="howTitle">How to use it</h2>
+    <svg class="how-path" viewBox="0 0 100 600" preserveAspectRatio="none" aria-hidden="true"><path d="M2.4 18 C 2.4 73, 52.3 63, 52.3 118 C 52.3 173, 2.4 163, 2.4 218 C 2.4 273, 52.3 263, 52.3 318 C 52.3 373, 2.4 363, 2.4 418 C 2.4 473, 52.3 463, 52.3 518" /></svg>
+    <ol class="steps">
+      <li><h3>Share the purpose</h3><p>Tell them what the journal is and why you’re collecting.</p></li>
+      <li><h3>Pick a questionnaire</h3><p>Choose one, let them choose, or write your own.</p></li>
+      <li><h3>Give them time</h3><p>Good answers need a moment. Let them think.</p></li>
+      <li><h3>Be respectful</h3><p>Nobody has to answer everything.</p></li>
+      <li><h3>Invite them further</h3><p>Ask for a hidden gem or a drawing too.</p></li>
+      <li><h3>Keep going</h3><p>No rush. The book grows one person at a time.</p></li>
+    </ol>
+  </section>
 
-      <div class="howto">
-        <h2 class="display howto-title">How it works</h2>
-        <ol class="steps">
-          <li><strong>Share the purpose.</strong> Tell the person what the journal is for: capturing connections.</li>
-          <li><strong>Pick a questionnaire.</strong> Choose one, let them choose, or make up your own.</li>
-          <li><strong>Encourage reflection.</strong> Good answers need a quiet moment, so give them time.</li>
-          <li><strong>Be respectful.</strong> Everyone decides how much they want to share.</li>
-          <li><strong>Invite them further.</strong> Ask for a hidden gem or a drawing on the canvas of emotions.</li>
-          <li><strong>Enjoy the journey.</strong> Page by page, you build a collection of stories nobody else has.</li>
-        </ol>
-      </div>
+  <!-- COLLECTED WISDOM -->
+  <!-- PHOTOS: save your photos as images/wisdom-1.jpg … images/wisdom-6.jpg
+       and write a short caption into each <figcaption>. -->
+  <section class="collected" id="collected">
+    <h2 class="display">Collected wisdom</h2>
+    <p class="lead">Pages from my own journal, filled in by people I met along the way.</p>
+    <div class="wall">
+      <figure class="polaroid"><img src="images/wisdom-1.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')"><figcaption></figcaption></figure>
+      <figure class="polaroid"><img src="images/wisdom-2.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')"><figcaption></figcaption></figure>
+      <figure class="polaroid"><img src="images/wisdom-3.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')"><figcaption></figcaption></figure>
+      <figure class="polaroid"><img src="images/wisdom-4.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')"><figcaption></figcaption></figure>
+      <figure class="polaroid"><img src="images/wisdom-5.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')"><figcaption></figcaption></figure>
+      <figure class="polaroid"><img src="images/wisdom-6.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')"><figcaption></figcaption></figure>
+    </div>
+  </section>
 
-      <div class="prompt">
-        <p class="prompt-intro">Better than “Where are you from?” Try one of the twenty prompts from the book:</p>
-        <p class="prompt-q" id="promptText" aria-live="polite">What's the most valuable lesson you've learned from someone unexpected?</p>
-        <button class="btn btn-ink" id="promptNext" type="button">Show another question</button>
-      </div>
-    </section>
+  <!-- STORY -->
+  <section class="story" id="story">
+    <div class="story-inner">
+      <h2 class="display">By Anna Mussotter</h2>
+      <p class="story-sub">Wandering through life with curiosity and passion.</p>
+      <p>Three years ago I carried a blank notebook and asked people to share their best advice. People connected with the idea and opened up, and I realised how rare and valuable it is to connect that way.</p>
+      <p>While studying for graduation, I started designing Wander Wisdom. I tested the first copy in Australia, and it led to beautiful insights and unexpected moments that shaped my travels.</p>
+      <p>That first notebook is now the most valuable thing I own. I hope yours becomes just as special.</p>
+      <p class="story-foot"><span>Est. 2025</span><a href="https://www.instagram.com/anna_.mst/" target="_blank" rel="noopener">@anna_.mst on Instagram</a></p>
+    </div>
+  </section>
 
-    <!-- ============ ORDER ============ -->
-    <section class="order" data-tone="light" id="order">
-      <div class="order-map-wrap">
-        <svg class="map map-paper" id="orderMap" aria-hidden="true" focusable="false"><path class="land" id="orderLand" /></svg>
-        <div class="markers" id="orderMarkers"></div>
-        <h2 class="display order-title">Where will your first wisdom come from?</h2>
-        <p class="order-hint" id="orderHint">Tap anywhere on the map to place your first dot.</p>
-      </div>
+  <!-- GET -->
+  <section class="get" id="get">
+    <svg class="map map-empty" viewBox="0 0 1000 500" aria-hidden="true">
+      <path class="land" d="M356 20h0M364 20h0M372 20h0M380 20h0M388 20h0M428 20h0M436 20h0M444 20h0M964 20h0M972 20h0M980 20h0M988 20h0M996 20h0M44 28h0M340 28h0M348 28h0M356 28h0M364 28h0M372 28h0M380 28h0M388 28h0M396 28h0M404 28h0M412 28h0M420 28h0M428 28h0M436 28h0M444 28h0M452 28h0M460 28h0M524 28h0M532 28h0M540 28h0M684 28h0M956 28h0M964 28h0M988 28h0M996 28h0M4 36h0M12 36h0M20 36h0M28 36h0M36 36h0M92 36h0M292 36h0M324 36h0M332 36h0M340 36h0M348 36h0M396 36h0M404 36h0M412 36h0M420 36h0M428 36h0M436 36h0M444 36h0M452 36h0M460 36h0M604 36h0M660 36h0M668 36h0M676 36h0M684 36h0M692 36h0M700 36h0M756 36h0M956 36h0M988 36h0M996 36h0M4 44h0M12 44h0M20 44h0M28 44h0M36 44h0M44 44h0M52 44h0M60 44h0M68 44h0M84 44h0M92 44h0M100 44h0M268 44h0M276 44h0M284 44h0M292 44h0M300 44h0M332 44h0M340 44h0M348 44h0M356 44h0M396 44h0M404 44h0M412 44h0M420 44h0M428 44h0M436 44h0M444 44h0M452 44h0M604 44h0M636 44h0M652 44h0M660 44h0M668 44h0M676 44h0M684 44h0M692 44h0M700 44h0M708 44h0M716 44h0M724 44h0M732 44h0M740 44h0M764 44h0M772 44h0M780 44h0M844 44h0M964 44h0M972 44h0M980 44h0M996 44h0M4 52h0M12 52h0M20 52h0M28 52h0M36 52h0M44 52h0M52 52h0M60 52h0M68 52h0M76 52h0M84 52h0M92 52h0M100 52h0M108 52h0M116 52h0M124 52h0M132 52h0M140 52h0M148 52h0M180 52h0M188 52h0M196 52h0M204 52h0M212 52h0M220 52h0M228 52h0M236 52h0M244 52h0M252 52h0M260 52h0M268 52h0M276 52h0M292 52h0M308 52h0M316 52h0M324 52h0M332 52h0M356 52h0M364 52h0M404 52h0M412 52h0M420 52h0M428 52h0M436 52h0M532 52h0M540 52h0M548 52h0M556 52h0M564 52h0M572 52h0M588 52h0M604 52h0M612 52h0M620 52h0M628 52h0M636 52h0M644 52h0M652 52h0M660 52h0M668 52h0M676 52h0M684 52h0M692 52h0M700 52h0M708 52h0M716 52h0M724 52h0M732 52h0M740 52h0M748 52h0M756 52h0M764 52h0M772 52h0M780 52h0M788 52h0M796 52h0M804 52h0M812 52h0M820 52h0M828 52h0M836 52h0M844 52h0M852 52h0M884 52h0M892 52h0M900 52h0M908 52h0M916 52h0M924 52h0M932 52h0M940 52h0M948 52h0M956 52h0M964 52h0M972 52h0M980 52h0M996 52h0M4 60h0M12 60h0M20 60h0M28 60h0M36 60h0M44 60h0M52 60h0M60 60h0M68 60h0M76 60h0M84 60h0M92 60h0M100 60h0M108 60h0M116 60h0M124 60h0M132 60h0M148 60h0M164 60h0M172 60h0M180 60h0M188 60h0M196 60h0M204 60h0M212 60h0M220 60h0M228 60h0M236 60h0M244 60h0M252 60h0M260 60h0M268 60h0M276 60h0M284 60h0M292 60h0M300 60h0M308 60h0M316 60h0M324 60h0M348 60h0M356 60h0M364 60h0M396 60h0M404 60h0M412 60h0M460 60h0M468 60h0M524 60h0M532 60h0M540 60h0M556 60h0M564 60h0M588 60h0M596 60h0M604 60h0M612 60h0M620 60h0M628 60h0M636 60h0M644 60h0M652 60h0M660 60h0M668 60h0M676 60h0M684 60h0M692 60h0M700 60h0M708 60h0M716 60h0M724 60h0M732 60h0M740 60h0M748 60h0M756 60h0M764 60h0M772 60h0M780 60h0M788 60h0M796 60h0M804 60h0M812 60h0M820 60h0M828 60h0M836 60h0M844 60h0M852 60h0M860 60h0M876 60h0M892 60h0M900 60h0M908 60h0M916 60h0M924 60h0M932 60h0M940 60h0M948 60h0M956 60h0M964 60h0M972 60h0M980 60h0M988 60h0M996 60h0M4 68h0M12 68h0M20 68h0M28 68h0M36 68h0M44 68h0M52 68h0M60 68h0M68 68h0M76 68h0M84 68h0M92 68h0M100 68h0M108 68h0M116 68h0M164 68h0M172 68h0M180 68h0M188 68h0M196 68h0M204 68h0M212 68h0M220 68h0M228 68h0M236 68h0M244 68h0M252 68h0M260 68h0M268 68h0M276 68h0M284 68h0M292 68h0M300 68h0M340 68h0M348 68h0M404 68h0M412 68h0M516 68h0M524 68h0M532 68h0M548 68h0M556 68h0M564 68h0M572 68h0M580 68h0M588 68h0M596 68h0M604 68h0M612 68h0M620 68h0M628 68h0M636 68h0M644 68h0M652 68h0M660 68h0M668 68h0M676 68h0M684 68h0M692 68h0M700 68h0M708 68h0M716 68h0M724 68h0M732 68h0M740 68h0M748 68h0M756 68h0M764 68h0M772 68h0M780 68h0M788 68h0M796 68h0M804 68h0M812 68h0M820 68h0M828 68h0M836 68h0M844 68h0M852 68h0M860 68h0M908 68h0M916 68h0M924 68h0M932 68h0M940 68h0M948 68h0M956 68h0M964 68h0M972 68h0M980 68h0M988 68h0M996 68h0M4 76h0M12 76h0M20 76h0M28 76h0M36 76h0M60 76h0M84 76h0M164 76h0M172 76h0M212 76h0M220 76h0M228 76h0M236 76h0M244 76h0M252 76h0M260 76h0M268 76h0M276 76h0M284 76h0M292 76h0M340 76h0M348 76h0M364 76h0M516 76h0M524 76h0M532 76h0M556 76h0M564 76h0M572 76h0M580 76h0M588 76h0M596 76h0M604 76h0M612 76h0M620 76h0M628 76h0M636 76h0M644 76h0M652 76h0M660 76h0M668 76h0M676 76h0M684 76h0M692 76h0M700 76h0M708 76h0M716 76h0M724 76h0M732 76h0M740 76h0M748 76h0M756 76h0M764 76h0M772 76h0M780 76h0M788 76h0M796 76h0M820 76h0M844 76h0M924 76h0M932 76h0M972 76h0M980 76h0M988 76h0M996 76h0M4 84h0M12 84h0M60 84h0M68 84h0M156 84h0M220 84h0M228 84h0M236 84h0M244 84h0M252 84h0M260 84h0M268 84h0M276 84h0M284 84h0M292 84h0M300 84h0M308 84h0M340 84h0M348 84h0M356 84h0M364 84h0M492 84h0M532 84h0M548 84h0M556 84h0M564 84h0M572 84h0M580 84h0M588 84h0M596 84h0M604 84h0M612 84h0M620 84h0M628 84h0M636 84h0M644 84h0M652 84h0M660 84h0M668 84h0M676 84h0M684 84h0M692 84h0M700 84h0M708 84h0M716 84h0M724 84h0M732 84h0M740 84h0M748 84h0M756 84h0M764 84h0M772 84h0M780 84h0M788 84h0M796 84h0M844 84h0M932 84h0M996 84h0M4 92h0M12 92h0M52 92h0M60 92h0M220 92h0M228 92h0M236 92h0M244 92h0M252 92h0M260 92h0M268 92h0M276 92h0M284 92h0M292 92h0M300 92h0M308 92h0M316 92h0M332 92h0M340 92h0M348 92h0M356 92h0M364 92h0M372 92h0M484 92h0M492 92h0M500 92h0M516 92h0M524 92h0M532 92h0M540 92h0M548 92h0M556 92h0M564 92h0M572 92h0M580 92h0M588 92h0M596 92h0M604 92h0M612 92h0M620 92h0M628 92h0M636 92h0M644 92h0M652 92h0M660 92h0M668 92h0M676 92h0M684 92h0M692 92h0M700 92h0M708 92h0M716 92h0M724 92h0M732 92h0M740 92h0M748 92h0M756 92h0M764 92h0M772 92h0M780 92h0M788 92h0M796 92h0M804 92h0M844 92h0M852 92h0M4 100h0M220 100h0M228 100h0M236 100h0M244 100h0M252 100h0M260 100h0M268 100h0M276 100h0M284 100h0M292 100h0M300 100h0M308 100h0M316 100h0M324 100h0M332 100h0M340 100h0M348 100h0M356 100h0M364 100h0M372 100h0M492 100h0M508 100h0M516 100h0M524 100h0M532 100h0M540 100h0M548 100h0M556 100h0M564 100h0M572 100h0M580 100h0M588 100h0M596 100h0M604 100h0M612 100h0M620 100h0M628 100h0M636 100h0M644 100h0M652 100h0M660 100h0M668 100h0M676 100h0M684 100h0M692 100h0M700 100h0M708 100h0M716 100h0M724 100h0M732 100h0M740 100h0M748 100h0M756 100h0M764 100h0M772 100h0M780 100h0M788 100h0M796 100h0M804 100h0M812 100h0M820 100h0M220 108h0M228 108h0M236 108h0M244 108h0M252 108h0M260 108h0M268 108h0M276 108h0M284 108h0M292 108h0M300 108h0M308 108h0M316 108h0M324 108h0M332 108h0M340 108h0M348 108h0M372 108h0M492 108h0M500 108h0M508 108h0M516 108h0M524 108h0M532 108h0M540 108h0M548 108h0M556 108h0M564 108h0M572 108h0M580 108h0M588 108h0M596 108h0M604 108h0M612 108h0M620 108h0M628 108h0M636 108h0M644 108h0M652 108h0M660 108h0M668 108h0M676 108h0M684 108h0M692 108h0M700 108h0M708 108h0M716 108h0M724 108h0M732 108h0M740 108h0M748 108h0M756 108h0M764 108h0M772 108h0M780 108h0M788 108h0M796 108h0M804 108h0M812 108h0M220 116h0M228 116h0M236 116h0M244 116h0M252 116h0M260 116h0M268 116h0M276 116h0M284 116h0M292 116h0M300 116h0M308 116h0M316 116h0M324 116h0M332 116h0M340 116h0M356 116h0M500 116h0M508 116h0M516 116h0M524 116h0M532 116h0M540 116h0M548 116h0M556 116h0M564 116h0M580 116h0M588 116h0M596 116h0M604 116h0M620 116h0M628 116h0M636 116h0M644 116h0M652 116h0M660 116h0M668 116h0M676 116h0M684 116h0M692 116h0M700 116h0M708 116h0M716 116h0M724 116h0M732 116h0M740 116h0M748 116h0M756 116h0M764 116h0M772 116h0M780 116h0M788 116h0M796 116h0M804 116h0M812 116h0M828 116h0M212 124h0M220 124h0M228 124h0M236 124h0M244 124h0M252 124h0M260 124h0M268 124h0M276 124h0M284 124h0M292 124h0M300 124h0M308 124h0M316 124h0M324 124h0M332 124h0M484 124h0M492 124h0M500 124h0M532 124h0M548 124h0M556 124h0M564 124h0M604 124h0M612 124h0M628 124h0M636 124h0M644 124h0M652 124h0M660 124h0M668 124h0M676 124h0M684 124h0M692 124h0M700 124h0M708 124h0M716 124h0M724 124h0M732 124h0M740 124h0M748 124h0M756 124h0M764 124h0M772 124h0M780 124h0M788 124h0M796 124h0M804 124h0M828 124h0M212 132h0M220 132h0M228 132h0M236 132h0M244 132h0M252 132h0M260 132h0M268 132h0M276 132h0M284 132h0M292 132h0M300 132h0M308 132h0M316 132h0M324 132h0M484 132h0M492 132h0M548 132h0M564 132h0M572 132h0M580 132h0M588 132h0M596 132h0M604 132h0M612 132h0M628 132h0M636 132h0M644 132h0M652 132h0M660 132h0M668 132h0M676 132h0M684 132h0M692 132h0M700 132h0M708 132h0M716 132h0M724 132h0M732 132h0M740 132h0M748 132h0M756 132h0M764 132h0M772 132h0M780 132h0M788 132h0M796 132h0M836 132h0M212 140h0M220 140h0M228 140h0M236 140h0M244 140h0M252 140h0M260 140h0M268 140h0M276 140h0M284 140h0M292 140h0M300 140h0M308 140h0M316 140h0M492 140h0M516 140h0M524 140h0M572 140h0M580 140h0M588 140h0M596 140h0M604 140h0M612 140h0M620 140h0M636 140h0M644 140h0M652 140h0M660 140h0M668 140h0M676 140h0M684 140h0M692 140h0M700 140h0M708 140h0M716 140h0M724 140h0M732 140h0M740 140h0M748 140h0M756 140h0M764 140h0M772 140h0M780 140h0M788 140h0M804 140h0M828 140h0M836 140h0M212 148h0M220 148h0M228 148h0M236 148h0M244 148h0M252 148h0M260 148h0M268 148h0M276 148h0M284 148h0M292 148h0M300 148h0M308 148h0M484 148h0M492 148h0M500 148h0M508 148h0M516 148h0M524 148h0M588 148h0M596 148h0M604 148h0M612 148h0M620 148h0M628 148h0M636 148h0M644 148h0M652 148h0M660 148h0M668 148h0M676 148h0M684 148h0M692 148h0M700 148h0M708 148h0M716 148h0M724 148h0M732 148h0M740 148h0M748 148h0M756 148h0M764 148h0M772 148h0M780 148h0M788 148h0M820 148h0M828 148h0M228 156h0M236 156h0M244 156h0M252 156h0M260 156h0M268 156h0M276 156h0M284 156h0M292 156h0M300 156h0M484 156h0M492 156h0M500 156h0M508 156h0M516 156h0M524 156h0M532 156h0M556 156h0M564 156h0M588 156h0M596 156h0M604 156h0M612 156h0M620 156h0M628 156h0M636 156h0M644 156h0M652 156h0M660 156h0M668 156h0M676 156h0M684 156h0M692 156h0M700 156h0M708 156h0M716 156h0M724 156h0M732 156h0M740 156h0M748 156h0M756 156h0M764 156h0M772 156h0M780 156h0M788 156h0M796 156h0M820 156h0M220 164h0M228 164h0M236 164h0M244 164h0M252 164h0M260 164h0M300 164h0M476 164h0M484 164h0M492 164h0M500 164h0M508 164h0M516 164h0M524 164h0M532 164h0M540 164h0M548 164h0M556 164h0M564 164h0M572 164h0M580 164h0M588 164h0M596 164h0M604 164h0M612 164h0M628 164h0M636 164h0M644 164h0M652 164h0M660 164h0M668 164h0M676 164h0M684 164h0M692 164h0M700 164h0M708 164h0M716 164h0M724 164h0M732 164h0M740 164h0M748 164h0M756 164h0M764 164h0M772 164h0M780 164h0M788 164h0M796 164h0M236 172h0M244 172h0M252 172h0M300 172h0M468 172h0M476 172h0M484 172h0M492 172h0M500 172h0M508 172h0M516 172h0M524 172h0M532 172h0M540 172h0M548 172h0M556 172h0M564 172h0M572 172h0M580 172h0M596 172h0M604 172h0M612 172h0M620 172h0M644 172h0M652 172h0M660 172h0M668 172h0M676 172h0M684 172h0M692 172h0M700 172h0M708 172h0M716 172h0M724 172h0M732 172h0M740 172h0M748 172h0M756 172h0M764 172h0M772 172h0M780 172h0M788 172h0M796 172h0M236 180h0M244 180h0M252 180h0M460 180h0M468 180h0M476 180h0M484 180h0M492 180h0M500 180h0M508 180h0M516 180h0M524 180h0M532 180h0M540 180h0M548 180h0M556 180h0M564 180h0M572 180h0M580 180h0M588 180h0M604 180h0M612 180h0M620 180h0M628 180h0M636 180h0M644 180h0M676 180h0M684 180h0M692 180h0M700 180h0M708 180h0M716 180h0M724 180h0M732 180h0M740 180h0M748 180h0M756 180h0M764 180h0M772 180h0M780 180h0M788 180h0M236 188h0M244 188h0M252 188h0M276 188h0M308 188h0M460 188h0M468 188h0M476 188h0M484 188h0M492 188h0M500 188h0M508 188h0M516 188h0M524 188h0M532 188h0M540 188h0M548 188h0M556 188h0M564 188h0M572 188h0M580 188h0M588 188h0M604 188h0M612 188h0M620 188h0M628 188h0M636 188h0M644 188h0M684 188h0M692 188h0M700 188h0M708 188h0M716 188h0M732 188h0M740 188h0M748 188h0M756 188h0M764 188h0M244 196h0M252 196h0M260 196h0M268 196h0M276 196h0M316 196h0M332 196h0M460 196h0M468 196h0M476 196h0M484 196h0M492 196h0M500 196h0M508 196h0M516 196h0M524 196h0M532 196h0M540 196h0M548 196h0M556 196h0M564 196h0M572 196h0M580 196h0M588 196h0M596 196h0M612 196h0M620 196h0M628 196h0M636 196h0M692 196h0M700 196h0M708 196h0M740 196h0M748 196h0M756 196h0M764 196h0M268 204h0M276 204h0M284 204h0M460 204h0M468 204h0M476 204h0M484 204h0M492 204h0M500 204h0M508 204h0M516 204h0M524 204h0M532 204h0M540 204h0M548 204h0M556 204h0M564 204h0M572 204h0M580 204h0M588 204h0M596 204h0M612 204h0M620 204h0M628 204h0M692 204h0M700 204h0M748 204h0M756 204h0M764 204h0M772 204h0M284 212h0M460 212h0M468 212h0M476 212h0M484 212h0M492 212h0M500 212h0M508 212h0M516 212h0M524 212h0M532 212h0M540 212h0M548 212h0M556 212h0M564 212h0M572 212h0M580 212h0M588 212h0M596 212h0M604 212h0M612 212h0M692 212h0M700 212h0M764 212h0M772 212h0M284 220h0M308 220h0M316 220h0M324 220h0M332 220h0M340 220h0M468 220h0M476 220h0M484 220h0M492 220h0M500 220h0M508 220h0M516 220h0M524 220h0M532 220h0M540 220h0M548 220h0M556 220h0M564 220h0M572 220h0M580 220h0M588 220h0M596 220h0M604 220h0M612 220h0M620 220h0M628 220h0M700 220h0M772 220h0M804 220h0M308 228h0M316 228h0M324 228h0M332 228h0M340 228h0M348 228h0M468 228h0M476 228h0M484 228h0M492 228h0M500 228h0M508 228h0M516 228h0M524 228h0M532 228h0M540 228h0M548 228h0M556 228h0M564 228h0M572 228h0M580 228h0M588 228h0M596 228h0M604 228h0M612 228h0M620 228h0M708 228h0M756 228h0M820 228h0M308 236h0M316 236h0M324 236h0M332 236h0M340 236h0M348 236h0M356 236h0M364 236h0M516 236h0M524 236h0M532 236h0M540 236h0M548 236h0M556 236h0M564 236h0M572 236h0M580 236h0M588 236h0M596 236h0M604 236h0M612 236h0M620 236h0M748 236h0M764 236h0M796 236h0M300 244h0M308 244h0M316 244h0M324 244h0M332 244h0M340 244h0M348 244h0M356 244h0M364 244h0M532 244h0M540 244h0M548 244h0M556 244h0M564 244h0M572 244h0M580 244h0M588 244h0M596 244h0M604 244h0M612 244h0M756 244h0M764 244h0M788 244h0M796 244h0M828 244h0M300 252h0M308 252h0M316 252h0M324 252h0M332 252h0M340 252h0M348 252h0M356 252h0M364 252h0M372 252h0M524 252h0M532 252h0M540 252h0M548 252h0M556 252h0M564 252h0M572 252h0M580 252h0M588 252h0M596 252h0M604 252h0M764 252h0M788 252h0M796 252h0M300 260h0M308 260h0M316 260h0M324 260h0M332 260h0M340 260h0M348 260h0M356 260h0M364 260h0M372 260h0M380 260h0M388 260h0M396 260h0M532 260h0M540 260h0M548 260h0M556 260h0M564 260h0M572 260h0M580 260h0M588 260h0M596 260h0M764 260h0M788 260h0M796 260h0M812 260h0M828 260h0M844 260h0M852 260h0M860 260h0M300 268h0M308 268h0M316 268h0M324 268h0M332 268h0M340 268h0M348 268h0M356 268h0M364 268h0M372 268h0M380 268h0M388 268h0M396 268h0M404 268h0M532 268h0M540 268h0M548 268h0M556 268h0M564 268h0M572 268h0M580 268h0M588 268h0M596 268h0M772 268h0M844 268h0M860 268h0M868 268h0M876 268h0M884 268h0M300 276h0M308 276h0M316 276h0M324 276h0M332 276h0M340 276h0M348 276h0M356 276h0M364 276h0M372 276h0M380 276h0M388 276h0M396 276h0M404 276h0M540 276h0M548 276h0M556 276h0M564 276h0M572 276h0M580 276h0M588 276h0M596 276h0M812 276h0M820 276h0M860 276h0M876 276h0M308 284h0M316 284h0M324 284h0M332 284h0M340 284h0M348 284h0M356 284h0M364 284h0M372 284h0M380 284h0M388 284h0M396 284h0M404 284h0M540 284h0M548 284h0M556 284h0M564 284h0M572 284h0M580 284h0M588 284h0M596 284h0M308 292h0M316 292h0M324 292h0M332 292h0M340 292h0M348 292h0M356 292h0M364 292h0M372 292h0M380 292h0M388 292h0M396 292h0M532 292h0M540 292h0M548 292h0M556 292h0M564 292h0M572 292h0M580 292h0M588 292h0M596 292h0M836 292h0M844 292h0M860 292h0M324 300h0M332 300h0M340 300h0M348 300h0M356 300h0M364 300h0M372 300h0M380 300h0M388 300h0M396 300h0M532 300h0M540 300h0M548 300h0M556 300h0M564 300h0M572 300h0M580 300h0M588 300h0M596 300h0M620 300h0M820 300h0M828 300h0M836 300h0M844 300h0M860 300h0M868 300h0M324 308h0M332 308h0M340 308h0M348 308h0M356 308h0M364 308h0M372 308h0M380 308h0M388 308h0M396 308h0M540 308h0M548 308h0M556 308h0M564 308h0M572 308h0M580 308h0M588 308h0M612 308h0M620 308h0M812 308h0M820 308h0M828 308h0M836 308h0M844 308h0M852 308h0M860 308h0M868 308h0M332 316h0M340 316h0M348 316h0M356 316h0M364 316h0M372 316h0M380 316h0M388 316h0M396 316h0M540 316h0M548 316h0M556 316h0M564 316h0M572 316h0M580 316h0M588 316h0M612 316h0M620 316h0M788 316h0M796 316h0M804 316h0M812 316h0M820 316h0M828 316h0M836 316h0M844 316h0M852 316h0M860 316h0M868 316h0M876 316h0M332 324h0M340 324h0M348 324h0M356 324h0M364 324h0M372 324h0M380 324h0M540 324h0M548 324h0M556 324h0M564 324h0M572 324h0M580 324h0M612 324h0M788 324h0M796 324h0M804 324h0M812 324h0M820 324h0M828 324h0M836 324h0M844 324h0M852 324h0M860 324h0M868 324h0M876 324h0M332 332h0M340 332h0M348 332h0M356 332h0M364 332h0M372 332h0M540 332h0M548 332h0M556 332h0M564 332h0M572 332h0M580 332h0M788 332h0M796 332h0M804 332h0M812 332h0M820 332h0M828 332h0M836 332h0M844 332h0M852 332h0M860 332h0M868 332h0M876 332h0M332 340h0M340 340h0M348 340h0M356 340h0M364 340h0M372 340h0M548 340h0M556 340h0M564 340h0M572 340h0M788 340h0M796 340h0M804 340h0M812 340h0M820 340h0M828 340h0M836 340h0M844 340h0M852 340h0M860 340h0M868 340h0M332 348h0M340 348h0M348 348h0M356 348h0M364 348h0M372 348h0M548 348h0M556 348h0M564 348h0M788 348h0M796 348h0M828 348h0M836 348h0M844 348h0M852 348h0M860 348h0M868 348h0M52 356h0M332 356h0M340 356h0M348 356h0M356 356h0M836 356h0M844 356h0M852 356h0M860 356h0M60 364h0M332 364h0M340 364h0M348 364h0M356 364h0M924 364h0M332 372h0M340 372h0M60 380h0M332 380h0M340 380h0M348 380h0M900 380h0M60 388h0M332 388h0M340 388h0M332 396h0M340 396h0M340 404h0M348 412h0M356 412h0" />
+      <circle class="you-ring" cx="500" cy="250" r="6" />
+      <circle class="you" cx="500" cy="250" r="5" />
+    </svg>
+    <div class="get-text">
+      <h2 class="display">Where will your first wisdom come from?</h2>
+      <p>Your map is still empty. Wander Wisdom launches soon as a printed journal.</p>
+      <a class="button" href="https://www.instagram.com/anna_.mst/" target="_blank" rel="noopener">Follow the launch on Instagram</a>
+    </div>
+  </section>
 
-      <div class="product">
-        <div class="book" role="img" aria-label="The Wander Wisdom cover">
-          <div class="book-cover cover-art">
-            <span class="book-title">Wander<br />Wisdom</span>
-            <span class="book-tag">Unlock the potential of your everyday encounters.</span>
-          </div>
-        </div>
+</main>
 
-        <div class="product-info">
-          <h3 class="product-name">The Wander Wisdom journal</h3>
-          <p class="price">€17</p>
-          <ul class="facts">
-            <li>A5 softcover, 88 pages</li>
-            <li>Your profile, a world map, seven questionnaires, hidden gems, canvas of emotions, doodle pages and 20 prompts</li>
-            <li>Designed by Anna Mussotter</li>
-          </ul>
+<footer class="footer">
+  <p class="wordmark">Wander Wisdom</p>
+  <p>Along the way, it’s the people we meet who make the greatest impact.</p>
+  <p class="footer-small">© 2025 Anna Mussotter</p>
+  <nav class="footer-links" aria-label="Legal">
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+    <a href="widerruf.html">Widerrufsbelehrung</a>
+  </nav>
+</footer>
 
-          <table class="shipping">
-            <caption>Shipping</caption>
-            <tbody>
-              <tr><th scope="row">Germany</th><td>€2</td></tr>
-              <tr><th scope="row">Rest of Europe</th><td>€5</td></tr>
-              <tr><th scope="row">Outside Europe</th><td><a href="https://www.instagram.com/anna_.mst/" rel="noopener" target="_blank">Ask me</a></td></tr>
-            </tbody>
-          </table>
-
-          <p class="gift">Also a gift for someone about to leave: before the gap year, the semester abroad or the first big trip.</p>
-
-          <a class="btn btn-ink btn-big" id="orderBtn" href="#order">Order the journal – €17</a>
-          <p class="order-notice" id="orderNotice" role="status" hidden>
-            Online checkout opens soon. Until then, send me a message on Instagram to order:
-            <a href="https://www.instagram.com/anna_.mst/" rel="noopener" target="_blank">@Anna_.mst</a>
-          </p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="foot" data-tone="dark">
-    <p class="foot-mark">Wander Wisdom</p>
-    <p>A journal by Anna Mussotter. Est. 2025.</p>
-    <nav class="foot-links" aria-label="Legal">
-      <a href="https://www.instagram.com/anna_.mst/" rel="noopener" target="_blank">Instagram</a>
-      <a href="impressum.html">Impressum</a>
-      <a href="datenschutz.html">Datenschutz</a>
-      <a href="widerruf.html">Widerrufsbelehrung</a>
-    </nav>
-  </footer>
-
-  <script src="assets/map-dots.js"></script>
-  <script src="entries.js"></script>
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
