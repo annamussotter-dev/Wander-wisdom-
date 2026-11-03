@@ -53,6 +53,7 @@ const PROMPTS = [
   const svg = $("#heroMap");
   const markerLayer = $("#markers");
   const pts = ENTRIES.map((e) => project(e.lat, e.lon));
+  const DOT_COLOURS = ["#ffc531", "#ff5a1f", "#ff4f8b", "#59b2ff"]; // sun, sunset, flamingo, sky
   const n = ENTRIES.length;
 
   // Journey line: gentle arcs from person to person
@@ -84,6 +85,7 @@ const PROMPTS = [
     label.textContent = `${e.name}, ${e.place.split(",")[0]}`;
     b.append(label);
     b.addEventListener("click", () => show(i));
+    b.style.setProperty("--c", DOT_COLOURS[i % DOT_COLOURS.length]);
     markerLayer.append(b);
     return b;
   });
@@ -313,6 +315,21 @@ const PROMPTS = [
     const fmt = (v, pos, neg) => `${Math.abs(Math.round(v))}° ${v >= 0 ? pos : neg}`;
     hint.textContent = `${fmt(lat, "N", "S")}, ${fmt(lon, "E", "W")}. Someone there has something to tell you.`;
   });
+
+  // ===================================================================
+  //  TOP BAR: dark or light text depending on the section underneath
+  // ===================================================================
+  const bar = $(".bar");
+  const toned = [...document.querySelectorAll("[data-tone]")];
+  let toneTick = false;
+  const updateTone = () => {
+    toneTick = false;
+    const y = bar.offsetHeight / 2;
+    const under = toned.find((el) => { const r = el.getBoundingClientRect(); return r.top <= y && r.bottom > y; });
+    bar.dataset.tone = under ? under.dataset.tone : "dark";
+  };
+  window.addEventListener("scroll", () => { if (!toneTick) { toneTick = true; requestAnimationFrame(updateTone); } }, { passive: true });
+  updateTone();
 
   // ===================================================================
   //  PROMPTS + ORDER BUTTON

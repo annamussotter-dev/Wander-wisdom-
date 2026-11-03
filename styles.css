@@ -29,6 +29,15 @@
   --map-night: #5f5d5a;
   --map-day: #d3d1ce;
 
+  /* sunset + travel-poster colours */
+  --twilight: #221a4a;       /* dusk sky behind the map */
+  --twilight-dots: #54468f;  /* land dots at dusk */
+  --sun: #ffc531;            /* sun yellow */
+  --flame: #ff5a1f;          /* sunset orange */
+  --flamingo: #ff4f8b;       /* hot pink */
+  --cobalt: #1f3ddb;         /* poster blue */
+  --sky: #59b2ff;            /* evening sky blue */
+
   --display: "Anton", "Impact", "Arial Narrow", sans-serif;
   --sans: "Jost", "Futura", "Century Gothic", system-ui, sans-serif;
 
@@ -97,9 +106,10 @@ p, h1, h2, h3, ul, ol, dl, dd, figure, blockquote { margin: 0; }
   padding: 1rem var(--gutter);
   padding-top: max(1rem, env(safe-area-inset-top));
   color: #fff;
-  mix-blend-mode: difference;
   pointer-events: none;
+  transition: color 0.25s;
 }
+.bar[data-tone="light"] { color: var(--black); }
 .bar a { pointer-events: auto; }
 .wordmark {
   font-family: var(--display); text-transform: uppercase; text-decoration: none;
@@ -116,17 +126,17 @@ p, h1, h2, h3, ul, ol, dl, dd, figure, blockquote { margin: 0; }
 .hero {
   position: relative;
   height: 100vh; height: 100svh; min-height: 560px;
-  background: var(--night);
+  background: var(--twilight);
   color: var(--paper);
   overflow: hidden;
   isolation: isolate;
 }
 .map { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .land { fill: none; stroke-linecap: round; stroke-width: 2.3; }
-.map-night .land { stroke: var(--map-night); }
-.map-day .land { stroke: var(--map-day); }
+.map-night .land { stroke: var(--twilight-dots); }
+.map-day .land { stroke: rgba(110, 25, 0, 0.28); }
 .route {
-  fill: none; stroke: rgba(255, 255, 255, 0.7); stroke-width: 1.4;
+  fill: none; stroke: rgba(255, 197, 160, 0.85); stroke-width: 1.5;
   stroke-dasharray: 6 7; vector-effect: non-scaling-stroke;
 }
 .route-mask { fill: none; stroke: #fff; stroke-width: 60; stroke-linecap: round; }
@@ -145,12 +155,12 @@ p, h1, h2, h3, ul, ol, dl, dd, figure, blockquote { margin: 0; }
   transform: translate(-50%, -50%);
 }
 .marker::before {
-  width: 11px; height: 11px; background: #fff;
-  box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.9), 0 0 22px 6px rgba(255, 255, 255, 0.35);
+  width: 12px; height: 12px; background: var(--c, #fff);
+  box-shadow: 0 0 6px 2px var(--c, #fff), 0 0 24px 8px color-mix(in srgb, var(--c, #fff) 45%, transparent);
   transition: width 0.2s, height 0.2s;
 }
 .marker::after {
-  width: 11px; height: 11px; border: 1px solid rgba(255, 255, 255, 0.8);
+  width: 12px; height: 12px; border: 1.5px solid var(--c, #fff);
   animation: ping 2.8s ease-out infinite;
 }
 .marker:nth-child(2)::after { animation-delay: 0.5s; }
@@ -187,7 +197,8 @@ p, h1, h2, h3, ul, ol, dl, dd, figure, blockquote { margin: 0; }
   font-family: var(--display); font-weight: 400; text-transform: uppercase;
   font-size: clamp(2.6rem, 7.4vw, 7rem); line-height: 0.92; letter-spacing: 0.005em;
   max-width: 13ch;
-  text-shadow: 0 0 40px var(--night);
+  color: var(--sun);
+  text-shadow: 0 0 40px var(--twilight);
 }
 .hero-sub { margin-top: 1.1rem; max-width: 30em; font-size: clamp(1.05rem, 1.4vw, 1.25rem); color: rgba(255, 255, 255, 0.86); }
 .hero-actions { margin-top: 1.6rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.5rem; }
@@ -291,7 +302,7 @@ p, h1, h2, h3, ul, ol, dl, dd, figure, blockquote { margin: 0; }
 /* =====================================================================
    STORY
    ===================================================================== */
-.story { padding: clamp(5rem, 12vw, 10rem) var(--gutter) 0; }
+.story { padding: clamp(5rem, 12vw, 10rem) var(--gutter) 0; background: var(--sun); }
 .story-lead {
   font-style: italic; font-size: clamp(1.6rem, 3.6vw, 2.9rem); line-height: 1.2;
   max-width: 22ch;
@@ -309,12 +320,12 @@ p, h1, h2, h3, ul, ol, dl, dd, figure, blockquote { margin: 0; }
   margin: 0.8rem 0; padding-left: 1.2rem; border-left: 2px solid var(--black);
   font-style: italic; font-size: clamp(1.3rem, 2vw, 1.6rem); line-height: 1.4;
 }
-.story-sign { color: var(--grey-3); font-size: 1rem; }
+.story-sign { color: rgba(0, 0, 0, 0.72); font-size: 1rem; }
 
 .concept {
   margin: clamp(5rem, 11vw, 9rem) calc(-1 * var(--gutter)) 0;
   padding: clamp(4rem, 9vw, 7rem) var(--gutter);
-  background: var(--charcoal); color: var(--paper);
+  background: var(--flamingo); color: var(--black);
   display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(2rem, 6vw, 6rem);
   align-items: end;
 }
@@ -322,14 +333,15 @@ p, h1, h2, h3, ul, ol, dl, dd, figure, blockquote { margin: 0; }
   font-family: var(--display); text-transform: uppercase;
   font-size: clamp(2.4rem, 5.6vw, 5rem); line-height: 0.95;
 }
-.concept-text { display: grid; gap: 1rem; max-width: var(--measure); color: rgba(255, 255, 255, 0.86); }
+.concept-text { display: grid; gap: 1rem; max-width: var(--measure); }
 
 /* =====================================================================
    INSIDE
    ===================================================================== */
 .inside {
   padding: clamp(5rem, 11vw, 9rem) var(--gutter);
-  background: var(--paper) var(--dotgrid) 0 0 / 22px 22px;
+  background: var(--cobalt) radial-gradient(circle, rgba(255, 255, 255, 0.16) 1px, transparent 1.4px) 0 0 / 22px 22px;
+  color: var(--paper);
 }
 .inside-head { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 2rem; align-items: end; }
 .lead { font-size: clamp(1.15rem, 1.6vw, 1.35rem); max-width: 28em; }
@@ -342,16 +354,15 @@ p, h1, h2, h3, ul, ol, dl, dd, figure, blockquote { margin: 0; }
   scrollbar-width: thin;
 }
 .pages figure { flex: 0 0 auto; width: clamp(190px, 22vw, 270px); scroll-snap-align: start; }
-.pages img { width: 100%; border: 1px solid var(--grey-1); box-shadow: 0 18px 30px -22px rgba(0, 0, 0, 0.45); background: var(--paper); }
-.pages figcaption { margin-top: 0.6rem; font-size: 0.92rem; color: var(--grey-3); }
+.pages img { width: 100%; border: 1px solid var(--grey-1); box-shadow: 0 24px 40px -24px rgba(0, 0, 20, 0.7); background: var(--paper); }
+.pages figcaption { margin-top: 0.6rem; font-size: 0.92rem; color: rgba(255, 255, 255, 0.78); }
 
-.chapters { margin-top: clamp(3rem, 7vw, 6rem); border-bottom: 1.5px solid var(--black); }
+.chapters { margin-top: clamp(3rem, 7vw, 6rem); border-bottom: 1.5px solid var(--paper); }
 .chapters > div {
   display: grid; grid-template-columns: minmax(12rem, 22rem) minmax(0, 1fr); gap: 0.5rem 2rem;
-  padding: 1.4rem 0; border-top: 1.5px solid var(--black);
-  background: var(--paper);
+  padding: 1.4rem 0; border-top: 1.5px solid var(--paper);
 }
-.chapters dt { font-family: var(--display); text-transform: uppercase; font-size: clamp(1.6rem, 2.6vw, 2.2rem); line-height: 1; }
+.chapters dt { color: var(--sun); font-family: var(--display); text-transform: uppercase; font-size: clamp(1.6rem, 2.6vw, 2.2rem); line-height: 1; }
 .chapters dd { max-width: var(--measure); }
 
 .howto { margin-top: clamp(5rem, 10vw, 8rem); }
@@ -365,12 +376,12 @@ p, h1, h2, h3, ul, ol, dl, dd, figure, blockquote { margin: 0; }
 .steps li::before {
   content: counter(step);
   position: absolute; left: 0; top: 0;
-  font-family: var(--display); font-size: 3rem; line-height: 1;
-  background: var(--paper); padding-right: 0.5rem;
+  font-family: var(--display); font-size: 3rem; line-height: 1; color: var(--sun);
+  background: var(--cobalt); padding-right: 0.5rem;
 }
 .steps li::after {
   content: ""; position: absolute; left: 0; right: -1.5rem; top: 1.5rem; z-index: -1;
-  border-top: 2px dashed var(--grey-2);
+  border-top: 2px dashed rgba(255, 255, 255, 0.45);
 }
 .steps li:last-child::after { right: 0; }
 .steps strong { display: block; font-weight: 600; margin-bottom: 0.3rem; }
@@ -378,16 +389,16 @@ p, h1, h2, h3, ul, ol, dl, dd, figure, blockquote { margin: 0; }
 .prompt {
   margin-top: clamp(5rem, 10vw, 8rem);
   padding: clamp(2rem, 5vw, 3.5rem);
-  background: var(--paper); border: 1.5px solid var(--black);
+  background: var(--sun); color: var(--black);
   display: grid; gap: 1.25rem; justify-items: start;
 }
-.prompt-intro { color: var(--grey-3); }
+.prompt-intro { color: rgba(0, 0, 0, 0.75); }
 .prompt-q { font-weight: 500; font-size: clamp(1.6rem, 3.4vw, 2.6rem); line-height: 1.2; max-width: 26ch; min-height: 2.4em; }
 
 /* =====================================================================
    ORDER
    ===================================================================== */
-.order { padding: clamp(4rem, 8vw, 6rem) var(--gutter) clamp(5rem, 10vw, 8rem); }
+.order { padding: clamp(4rem, 8vw, 6rem) var(--gutter) clamp(5rem, 10vw, 8rem); background: var(--flame); }
 .order-map-wrap {
   position: relative;
   height: clamp(420px, 52vw, 720px);
@@ -399,11 +410,10 @@ p, h1, h2, h3, ul, ol, dl, dd, figure, blockquote { margin: 0; }
 .order-title {
   position: relative; z-index: 1; pointer-events: none;
   font-size: clamp(2.8rem, 8vw, 7.5rem); max-width: 12ch; margin-inline: auto; padding-inline: var(--gutter);
-  text-shadow: 0 0 30px #fff, 0 0 12px #fff;
 }
-.order-hint { position: relative; z-index: 1; pointer-events: none; margin-top: 1.25rem; color: var(--grey-3); font-size: 1rem; }
+.order-hint { position: relative; z-index: 1; pointer-events: none; margin-top: 1.25rem; color: rgba(0, 0, 0, 0.75); font-size: 1rem; }
 .order .marker { opacity: 1; }
-.order .marker::before { background: var(--black); box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.12); }
+.order .marker::before { background: var(--sun); box-shadow: 0 0 0 3px var(--black), 0 0 26px 10px rgba(255, 197, 49, 0.7); }
 .order .marker::after { border-color: var(--black); }
 .order .marker-label { opacity: 1; background: var(--black); color: var(--paper); }
 
@@ -445,9 +455,9 @@ p, h1, h2, h3, ul, ol, dl, dd, figure, blockquote { margin: 0; }
 .facts li::before { content: ""; position: absolute; left: 0; top: 0.68em; width: 6px; height: 6px; border-radius: 50%; background: var(--black); }
 .shipping { margin-top: 1.8rem; border-collapse: collapse; width: 100%; max-width: 26rem; font-size: 1rem; }
 .shipping caption { text-align: left; font-weight: 600; padding-bottom: 0.4rem; }
-.shipping th, .shipping td { text-align: left; font-weight: 400; padding: 0.55rem 0; border-top: 1px solid var(--grey-1); }
+.shipping th, .shipping td { text-align: left; font-weight: 400; padding: 0.55rem 0; border-top: 1px solid rgba(0, 0, 0, 0.2); }
 .shipping td { text-align: right; }
-.gift { margin-top: 1.6rem; max-width: 28em; color: var(--grey-3); }
+.gift { margin-top: 1.6rem; max-width: 28em; }
 .btn-big { margin-top: 1.8rem; }
 .order-notice { margin-top: 1rem; max-width: 28em; padding: 0.9rem 1rem; border: 1.5px solid var(--black); background: var(--paper); font-size: 1rem; }
 
@@ -455,11 +465,11 @@ p, h1, h2, h3, ul, ol, dl, dd, figure, blockquote { margin: 0; }
    FOOTER
    ===================================================================== */
 .foot {
-  background: var(--night); color: rgba(255, 255, 255, 0.78);
+  background: var(--twilight); color: rgba(255, 255, 255, 0.8);
   padding: clamp(3.5rem, 8vw, 6rem) var(--gutter) max(2.5rem, env(safe-area-inset-bottom));
   display: grid; gap: 1rem; font-size: 1rem;
 }
-.foot-mark { font-family: var(--display); text-transform: uppercase; color: var(--paper); font-size: clamp(3rem, 12vw, 9rem); line-height: 0.85; }
+.foot-mark { font-family: var(--display); text-transform: uppercase; color: var(--flamingo); font-size: clamp(3rem, 12vw, 9rem); line-height: 0.85; }
 .foot-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-top: 1rem; }
 
 /* =====================================================================
@@ -470,7 +480,7 @@ html.intro body { overflow: hidden; }
 html.intro .intro-screen {
   position: fixed; inset: 0; z-index: 100;
   display: grid; place-items: center;
-  background: var(--night);
+  background: var(--twilight);
   perspective: 1800px;
 }
 .intro-book {
@@ -569,7 +579,7 @@ html.intro .intro-screen {
   .steps { grid-template-columns: 1fr; gap: 0; }
   .steps li { padding: 0 0 2rem 4rem; min-height: 4rem; }
   .steps li::before { font-size: 2.4rem; top: -0.2rem; }
-  .steps li::after, .steps li:nth-child(3n)::after { left: 0.75rem; right: auto; top: 3rem; bottom: 0; border-top: 0; border-left: 2px dashed var(--grey-2); }
+  .steps li::after, .steps li:nth-child(3n)::after { left: 0.75rem; right: auto; top: 3rem; bottom: 0; border-top: 0; border-left: 2px dashed rgba(255, 255, 255, 0.45); }
   .steps li:last-child::after { display: none; }
   .order-map-wrap { height: 110vw; max-height: 560px; }
 }
@@ -578,3 +588,8 @@ html.intro .intro-screen {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
 }
+
+/* next button on the map: sun yellow */
+#entryNext { background: var(--sun); color: var(--black); }
+#entryNext:hover { background: transparent; color: var(--sun); border-color: var(--sun); }
+.inside .btn-ink:hover, .prompt .btn-ink:hover { border-color: var(--black); }
