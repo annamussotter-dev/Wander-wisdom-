@@ -1,337 +1,213 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Wander Wisdom — A Guided Travel &amp; Reflection Journal</title>
-<meta name="description" content="Wander Wisdom is a guided journal for travelers and dreamers — prompts, maps, and pages to capture the wisdom you find along the way." />
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Wander Wisdom – the travel journal the people you meet write in</title>
+  <meta name="description" content="Wander Wisdom is a printed travel journal for co-creation: the people you meet on your travels write in it – their advice, lessons and perspectives. A5 softcover, 88 pages, by Anna Mussotter." />
+  <meta name="theme-color" content="#262524" />
+  <meta property="og:title" content="Wander Wisdom" />
+  <meta property="og:description" content="Unlock the potential of your everyday encounters. A travel journal the people you meet write in." />
+  <meta property="og:image" content="wander-wisdom-book/page-1-01.png" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23262524'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23fff'/%3E%3C/svg%3E" />
+  <link rel="preload" href="assets/fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/jost-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <a class="skip-link" href="#story">Skip the map</a>
 
-<a class="skip-link" href="#main">Skip to content</a>
-
-<header class="site-header" id="top">
-  <div class="wrap header-inner">
-    <a class="brand" href="#top">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 48 48" width="30" height="30"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M31 17 L20 20 L17 31 L28 28 Z" fill="currentColor"/><circle cx="24" cy="24" r="2.4" fill="var(--cream)"/></svg>
-      </span>
-      Wander Wisdom
-    </a>
-
-    <nav class="main-nav" id="main-nav" aria-label="Primary">
-      <a href="#inside">What's Inside</a>
-      <a href="#about">Our Story</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#faq">FAQ</a>
+  <header class="bar">
+    <a class="wordmark" href="#top" aria-label="Wander Wisdom, back to the map">Wander Wisdom</a>
+    <nav class="bar-nav" aria-label="Main">
+      <a href="#story">Story</a>
+      <a href="#inside">Inside the book</a>
+      <a class="bar-order" href="#order">Order</a>
     </nav>
+  </header>
 
-    <div class="header-actions">
-      <a class="btn btn-primary btn-small" href="#buy">Buy the Journal</a>
-      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-</header>
+  <main>
+    <!-- ============ HERO: the map of encounters ============ -->
+    <section class="hero" id="top" aria-label="A map of people met while travelling">
+      <svg class="map map-night" id="heroMap" aria-hidden="true" focusable="false">
+        <defs>
+          <mask id="routeReveal" maskUnits="userSpaceOnUse">
+            <path class="route-mask" id="routeMask" />
+          </mask>
+        </defs>
+        <path class="land" id="heroLand" />
+        <path class="route" id="route" mask="url(#routeReveal)" />
+      </svg>
+      <div class="markers" id="markers"></div>
 
-<main id="main">
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap hero-inner">
       <div class="hero-copy">
-        <p class="eyebrow">For travelers, wanderers &amp; quiet observers</p>
-        <h1>Every journey teaches you something. <span class="accent">Don't let it slip away.</span></h1>
-        <p class="hero-sub">Wander Wisdom is a guided journal built for the road — part travel log, part reflection practice. Prompts that ask the right questions, pages for maps and memories, and space for the wisdom you only find by leaving home.</p>
-        <div class="hero-cta">
-          <a href="#buy" class="btn btn-primary">Get Your Journal — $28</a>
-          <a href="#inside" class="btn btn-ghost">See What's Inside ↓</a>
+        <h1>Unlock the potential of your everyday encounters.</h1>
+        <p class="hero-sub">Every dot is someone I met on the road, and what they wrote in my journal.</p>
+        <div class="hero-actions">
+          <button class="btn btn-light" id="startJourney" type="button">Read the first wisdom</button>
+          <a class="link-light" href="#order">Order the journal</a>
         </div>
-        <ul class="hero-trust">
-          <li>★★★★★ <span>4.9/5 from 1,200+ travelers</span></li>
-          <li>Ships worldwide</li>
-          <li>Also available as instant PDF</li>
-        </ul>
+        <p class="hero-note">The five people on this map are examples. Real entries are on their way.</p>
       </div>
 
-      <div class="hero-art" aria-hidden="true">
-        <svg class="journal-svg" viewBox="0 0 420 520" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="cover" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#c1592f"/>
-              <stop offset="100%" stop-color="#8a3b1f"/>
-            </linearGradient>
-            <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#3a2418" flood-opacity="0.28"/>
-            </filter>
-          </defs>
-          <g filter="url(#soft)">
-            <rect x="40" y="30" width="330" height="460" rx="10" fill="url(#cover)"/>
-            <rect x="40" y="30" width="14" height="460" rx="6" fill="#6f2f19"/>
-            <g stroke="#f3e6d8" stroke-width="2.5" fill="none" opacity="0.9">
-              <circle cx="205" cy="235" r="86"/>
-              <path d="M255 195 L195 210 L175 260 L235 245 Z" fill="#f3e6d8" stroke="none"/>
-              <circle cx="205" cy="235" r="7" fill="#8a3b1f" stroke="#f3e6d8" stroke-width="2"/>
-            </g>
-            <text x="205" y="365" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#f3e6d8" letter-spacing="1">Wander Wisdom</text>
-            <text x="205" y="392" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#f3e6d8" opacity="0.85" letter-spacing="3">A GUIDED JOURNAL</text>
-          </g>
-        </svg>
-        <div class="floating-tag tag-1">✓ 200 pages</div>
-        <div class="floating-tag tag-2">✓ Fold-out map</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LOGO / SOCIAL PROOF STRIP -->
-  <section class="proof-strip">
-    <div class="wrap proof-inner">
-      <p>As journaled about by travelers from</p>
-      <ul>
-        <li>Lisbon</li><li>Kyoto</li><li>Oaxaca</li><li>Reykjavík</li><li>Cape Town</li><li>Chiang Mai</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- WHAT'S INSIDE -->
-  <section id="inside" class="section">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">What's Inside</p>
-        <h2>A structure for wandering, and for remembering.</h2>
-        <p class="section-sub">Every spread is designed to pull you out of your phone and into the moment — then help you hold onto it.</p>
-      </div>
-
-      <div class="feature-grid">
-        <article class="feature-card">
-          <div class="feature-icon">✎</div>
-          <h3>Guided daily prompts</h3>
-          <p>Questions that go beyond "what I did today" — what surprised you, what you'd tell a friend, what you want to remember in ten years.</p>
+      <aside class="entry" id="entry" role="dialog" aria-modal="false" aria-labelledby="entryQuestion" hidden>
+        <article class="page" id="entryPage">
+          <button class="entry-close" id="entryClose" type="button" aria-label="Close this page">×</button>
+          <p class="stamp" id="entryStamp">Example entry</p>
+          <p class="field field-line">
+            <span class="field-label">Location / date</span>
+            <span class="hand" id="entryPlace"></span>
+          </p>
+          <h2 class="entry-q" id="entryQuestion"></h2>
+          <p class="entry-a hand" id="entryAnswer"></p>
+          <div class="entry-who">
+            <p class="field"><span class="field-label">Name</span><span class="hand" id="entryName"></span></p>
+            <p class="field"><span class="field-label">Hometown</span><span class="hand" id="entryHome"></span></p>
+          </div>
         </article>
-        <article class="feature-card">
-          <div class="feature-icon">✈</div>
-          <h3>Trip-planning pages</h3>
-          <p>Budget trackers, packing checklists, and an itinerary spread so the logistics live in one place, not six apps.</p>
-        </article>
-        <article class="feature-card">
-          <div class="feature-icon">🗺</div>
-          <h3>Fold-out world map</h3>
-          <p>Pin every place you've been. A quiet, physical record of your wandering that grows with every trip.</p>
-        </article>
-        <article class="feature-card">
-          <div class="feature-icon">📷</div>
-          <h3>Memory-keeping spreads</h3>
-          <p>Pockets and tuck-lines for ticket stubs, pressed flowers, and photos — the small proof that it really happened.</p>
-        </article>
-        <article class="feature-card">
-          <div class="feature-icon">🌙</div>
-          <h3>Reflection check-ins</h3>
-          <p>Monthly pages that ask what your travels have taught you — so the wisdom doesn't stay on the road.</p>
-        </article>
-        <article class="feature-card">
-          <div class="feature-icon">📖</div>
-          <h3>200 acid-free pages</h3>
-          <p>Thick, pen-friendly paper, a lay-flat binding, and an elastic closure that survives a backpack.</p>
-        </article>
-      </div>
-    </div>
-  </section>
+        <div class="entry-nav">
+          <button class="btn-text" id="entryPrev" type="button">Previous</button>
+          <span class="entry-count" id="entryCount" aria-live="polite"></span>
+          <button class="btn btn-light" id="entryNext" type="button">Next wisdom →</button>
+        </div>
+      </aside>
 
-  <!-- ABOUT / STORY -->
-  <section id="about" class="section section-muted">
-    <div class="wrap about-inner">
-      <div class="about-art" aria-hidden="true">
-        <svg viewBox="0 0 300 300" width="100%" height="100%">
-          <circle cx="150" cy="150" r="140" fill="var(--sand)"/>
-          <path d="M60 190 Q150 100 240 190" stroke="var(--forest)" stroke-width="3" fill="none" opacity="0.5"/>
-          <path d="M50 210 Q150 130 250 210" stroke="var(--terracotta)" stroke-width="3" fill="none" opacity="0.6"/>
-          <circle cx="150" cy="150" r="46" fill="var(--terracotta)"/>
-          <text x="150" y="158" text-anchor="middle" font-size="34" fill="var(--cream)">✎</text>
-        </svg>
-      </div>
-      <div class="about-copy">
-        <p class="eyebrow">Our Story</p>
-        <h2>Written on a bus in Northern Vietnam, finished at a kitchen table back home.</h2>
-        <p>Wander Wisdom started as a beat-up notebook that went everywhere for three years — through sixteen countries, two breakups, and one very long layover in Doha. What came out of it was a habit: a few honest minutes each evening, turning a day of motion into something worth keeping.</p>
-        <p>We designed this journal so that habit is easier to start. No blank-page anxiety — just prompts, structure, and room for whatever the trip actually gave you.</p>
-        <ul class="about-list">
-          <li>Independently made by a two-person studio</li>
-          <li>Printed on FSC-certified paper</li>
-          <li>1% of every sale funds trail &amp; park conservation</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+      <a class="scroll-cue" href="#story">The story behind the book</a>
+    </section>
 
-  <!-- REVIEWS -->
-  <section id="reviews" class="section">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">Reviews</p>
-        <h2>Loved by people who'd rather remember than scroll.</h2>
+    <!-- ============ FOUNDER STORY ============ -->
+    <section class="story" id="story">
+      <p class="story-lead">Along the way, it's the people we meet who make the greatest impact.</p>
+
+      <div class="story-grid">
+        <h2 class="display story-title">By Anna Mussotter</h2>
+        <div class="story-text">
+          <p class="story-sub">Wandering through life with curiosity &amp; passion.</p>
+          <p>Three years ago, I carried a blank notebook and asked people to share their best advice.</p>
+          <p>What started as a simple idea quickly grew bigger. People connected with the concept, opened up, and I realised how valuable and unique it is to connect that way.</p>
+          <p>That sparked an idea: while studying for graduation, I began designing Wander Wisdom.</p>
+          <p>Testing the first sample in Australia uncovered the most beautiful insights from the people I met, and led to unexpected, meaningful moments that shaped my travels.</p>
+          <blockquote class="story-quote">Today, that first notebook is the most valuable thing I own – and I hope this one becomes just as special for you.</blockquote>
+          <p class="story-sign">Est. 2025. Follow along on Instagram: <a href="https://www.instagram.com/anna_.mst/" rel="noopener" target="_blank">@Anna_.mst</a></p>
+        </div>
       </div>
 
-      <div class="review-grid">
-        <blockquote class="review-card">
-          <p>"I've started and abandoned a dozen journals. The prompts in this one actually got me to write every single night of a five-week trip."</p>
-          <footer>— Priya M., backpacked through Southeast Asia</footer>
-        </blockquote>
-        <blockquote class="review-card">
-          <p>"The map spread alone is worth it. Watching it fill up with pins over the year has become my favorite thing about traveling."</p>
-          <footer>— Daniel R., 14 countries and counting</footer>
-        </blockquote>
-        <blockquote class="review-card">
-          <p>"Bought it for a solo trip to Japan and ended up gifting three more to friends. The paper quality is genuinely excellent."</p>
-          <footer>— Jun-Ho K., Seoul</footer>
-        </blockquote>
-        <blockquote class="review-card">
-          <p>"Not just for big trips — I use mine for weekend hikes too. It's become part of how I process everything, not just travel."</p>
-          <footer>— Amara O., weekend wanderer</footer>
-        </blockquote>
+      <div class="concept">
+        <p class="concept-quote">There's a hidden gem in everyone – you just have to find it.</p>
+        <div class="concept-text">
+          <p>In a fast-paced world, we often miss the chance to truly connect. Conversations stay on the surface, and the only things we bring home are photos and videos.</p>
+          <p>Wander Wisdom hands the pen to the people you meet. They answer questions that go deeper, in their own handwriting, and you come home with their advice, their lessons and their way of seeing the world.</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PRICING / BUY -->
-  <section id="buy" class="section section-dark">
-    <div class="wrap">
-      <div class="section-head light">
-        <p class="eyebrow">Get Your Copy</p>
-        <h2>Start your next trip with a blank page waiting for you.</h2>
+    <!-- ============ WHAT'S INSIDE ============ -->
+    <section class="inside" id="inside">
+      <div class="inside-head">
+        <h2 class="display">What's inside</h2>
+        <p class="lead">An A5 softcover journal with 88 pages. You fill in the first part. The people you meet fill in the rest.</p>
       </div>
 
-      <div class="pricing-grid">
-        <article class="price-card">
-          <h3>Digital Edition</h3>
-          <p class="price">$14 <span>PDF, instant download</span></p>
-          <ul>
-            <li>Printable, fillable PDF</li>
-            <li>Works on tablet + stylus</li>
-            <li>Delivered instantly by email</li>
-            <li>Print at home, any size</li>
+      <div class="pages" tabindex="0" aria-label="Pages from the printed journal, scroll sideways">
+        <figure><img src="wander-wisdom-book/page-1-01.png" alt="Cover: Wander Wisdom, unlock the potential of your everyday encounters" width="355" height="500" loading="lazy" /><figcaption>Cover</figcaption></figure>
+        <figure><img src="wander-wisdom-book/page-6-06.png" alt="Page 6: Concept – there's a hidden gem in everyone" width="355" height="500" loading="lazy" /><figcaption>Concept</figcaption></figure>
+        <figure><img src="wander-wisdom-book/page-9-09.png" alt="Page 9: Steps to your Wander Wisdom" width="355" height="500" loading="lazy" /><figcaption>Steps</figcaption></figure>
+        <figure><img src="wander-wisdom-book/page-10-10.png" alt="Page 10: your profile page with name, hometown and more" width="355" height="500" loading="lazy" /><figcaption>Your profile</figcaption></figure>
+        <figure><img src="wander-wisdom-book/page-20-20.png" alt="Page 20: My path – how to use the questionnaires" width="355" height="500" loading="lazy" /><figcaption>My path</figcaption></figure>
+        <figure><img src="wander-wisdom-book/page-71-71.png" alt="Page 71: Canvas of emotions" width="355" height="500" loading="lazy" /><figcaption>Canvas of emotions</figcaption></figure>
+      </div>
+
+      <dl class="chapters">
+        <div><dt>Your profile</dt><dd>Before anyone else writes in it, the book gets to know you: your hometown, the principles you live by, one fear, your goals, advice for your younger self and a message to your future self in five years.</dd></div>
+        <div><dt>Map to track</dt><dd>A world map to mark the places you've been and the people you met there.</dd></div>
+        <div><dt>Seven questionnaires</dt><dd>The heart of the book. Seven different questionnaires with three questions each, like <em>Life is about…</em>, <em>Advice for people in their 20s</em> or <em>What makes a good friend?</em> Every page has room for the writer's name, hometown and socials.</dd></div>
+        <div><dt>Quick connect</dt><dd>For when time is short but the connection still matters: three people, three short answers.</dd></div>
+        <div><dt>Your own pages</dt><dd>Everyone is unique. Write the questions only you would think of asking.</dd></div>
+        <div><dt>Hidden gems</dt><dd>The people you meet share their favourite places, activities, itineraries and artists. Your next trip, planned by locals and fellow travellers.</dd></div>
+        <div><dt>Canvas of emotions</dt><dd><em>How does happiness feel to you? What does it look like?</em> People answer with a drawing. Art is understood across every language and border.</dd></div>
+        <div><dt>Doodle time</dt><dd>Space for sketches, stickers, tickets and fleeting ideas.</dd></div>
+        <div><dt>20 prompts</dt><dd>Questions at the back of the book for when you want to go deeper.</dd></div>
+      </dl>
+
+      <div class="howto">
+        <h2 class="display howto-title">How it works</h2>
+        <ol class="steps">
+          <li><strong>Share the purpose.</strong> Tell the person what the journal is for: capturing connections.</li>
+          <li><strong>Pick a questionnaire.</strong> Choose one, let them choose, or make up your own.</li>
+          <li><strong>Encourage reflection.</strong> Good answers need a quiet moment, so give them time.</li>
+          <li><strong>Be respectful.</strong> Everyone decides how much they want to share.</li>
+          <li><strong>Invite them further.</strong> Ask for a hidden gem or a drawing on the canvas of emotions.</li>
+          <li><strong>Enjoy the journey.</strong> Page by page, you build a collection of stories nobody else has.</li>
+        </ol>
+      </div>
+
+      <div class="prompt">
+        <p class="prompt-intro">Better than “Where are you from?” Try one of the twenty prompts from the book:</p>
+        <p class="prompt-q" id="promptText" aria-live="polite">What's the most valuable lesson you've learned from someone unexpected?</p>
+        <button class="btn btn-ink" id="promptNext" type="button">Show another question</button>
+      </div>
+    </section>
+
+    <!-- ============ ORDER ============ -->
+    <section class="order" id="order">
+      <div class="order-map-wrap">
+        <svg class="map map-day" id="orderMap" aria-hidden="true" focusable="false"><path class="land" id="orderLand" /></svg>
+        <div class="markers" id="orderMarkers"></div>
+        <h2 class="display order-title">Where will your first wisdom come from?</h2>
+        <p class="order-hint" id="orderHint">Tap anywhere on the map to place your first dot.</p>
+      </div>
+
+      <div class="product">
+        <div class="book" role="img" aria-label="The Wander Wisdom cover">
+          <div class="book-cover">
+            <span class="book-title">Wander<br />Wisdom</span>
+            <span class="book-tag">Unlock the potential of your everyday encounters.</span>
+          </div>
+        </div>
+
+        <div class="product-info">
+          <h3 class="product-name">The Wander Wisdom journal</h3>
+          <p class="price">€17</p>
+          <ul class="facts">
+            <li>A5 softcover, 88 pages</li>
+            <li>Your profile, a world map, seven questionnaires, hidden gems, canvas of emotions, doodle pages and 20 prompts</li>
+            <li>Designed by Anna Mussotter</li>
           </ul>
-          <a href="#" class="btn btn-outline buy-btn" data-product="Wander Wisdom — Digital Edition" data-price="14">Buy Digital — $14</a>
-        </article>
 
-        <article class="price-card price-card-featured">
-          <p class="badge">Most Loved</p>
-          <h3>Printed Journal</h3>
-          <p class="price">$28 <span>hardcover, ships worldwide</span></p>
-          <ul>
-            <li>200 pages, lay-flat binding</li>
-            <li>Fold-out world map + elastic closure</li>
-            <li>Ribbon bookmark + memory pockets</li>
-            <li>Ships in eco-friendly packaging</li>
-          </ul>
-          <a href="#" class="btn btn-primary buy-btn" data-product="Wander Wisdom — Printed Journal" data-price="28">Buy Printed — $28</a>
-        </article>
+          <table class="shipping">
+            <caption>Shipping</caption>
+            <tbody>
+              <tr><th scope="row">Germany</th><td>€2</td></tr>
+              <tr><th scope="row">Rest of Europe</th><td>€5</td></tr>
+              <tr><th scope="row">Outside Europe</th><td><a href="https://www.instagram.com/anna_.mst/" rel="noopener" target="_blank">Ask me</a></td></tr>
+            </tbody>
+          </table>
 
-        <article class="price-card">
-          <h3>Journal + Gift Set</h3>
-          <p class="price">$42 <span>journal, pen &amp; sticker sheet</span></p>
-          <ul>
-            <li>Everything in the printed edition</li>
-            <li>Fine-tip waterproof travel pen</li>
-            <li>Destination sticker sheet</li>
-            <li>Gift-ready box, no card needed</li>
-          </ul>
-          <a href="#" class="btn btn-outline buy-btn" data-product="Wander Wisdom — Gift Set" data-price="42">Buy Gift Set — $42</a>
-        </article>
+          <p class="gift">Also a gift for someone about to leave: before the gap year, the semester abroad or the first big trip.</p>
+
+          <a class="btn btn-ink btn-big" id="orderBtn" href="#order">Order the journal – €17</a>
+          <p class="order-notice" id="orderNotice" role="status" hidden>
+            Online checkout opens soon. Until then, send me a message on Instagram to order:
+            <a href="https://www.instagram.com/anna_.mst/" rel="noopener" target="_blank">@Anna_.mst</a>
+          </p>
+        </div>
       </div>
+    </section>
+  </main>
 
-      <p class="guarantee">30-day "didn't fall in love with it" guarantee — full refund, no questions asked.</p>
-    </div>
-  </section>
+  <footer class="foot">
+    <p class="foot-mark">Wander Wisdom</p>
+    <p>A journal by Anna Mussotter. Est. 2025.</p>
+    <nav class="foot-links" aria-label="Legal">
+      <a href="https://www.instagram.com/anna_.mst/" rel="noopener" target="_blank">Instagram</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="widerruf.html">Widerrufsbelehrung</a>
+    </nav>
+  </footer>
 
-  <!-- FAQ -->
-  <section id="faq" class="section">
-    <div class="wrap wrap-narrow">
-      <div class="section-head">
-        <p class="eyebrow">FAQ</p>
-        <h2>Good to know</h2>
-      </div>
-
-      <div class="faq-list">
-        <details class="faq-item" open>
-          <summary>How is this different from a regular notebook?</summary>
-          <p>Wander Wisdom is structured specifically for travel — daily prompts, a trip planner, a fold-out map, and reflection check-ins built in, so you're never staring at a blank page wondering what to write.</p>
-        </details>
-        <details class="faq-item">
-          <summary>How long does shipping take?</summary>
-          <p>Domestic orders arrive in 3–5 business days. International orders typically take 7–14 business days depending on customs. You'll get a tracking link the moment it ships.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Can I use it for something other than travel?</summary>
-          <p>Absolutely. Many people use it for day trips, seasons of life, or just as a general reflection journal — the prompts work anywhere you're paying attention.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Is the digital edition fillable on an iPad?</summary>
-          <p>Yes — the PDF is optimized for GoodNotes, Notability, and similar apps, and prints beautifully if you'd rather go analog.</p>
-        </details>
-        <details class="faq-item">
-          <summary>What if I'm not happy with it?</summary>
-          <p>Reach out within 30 days of delivery and we'll refund you in full, no questions asked.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- EMAIL SIGNUP -->
-  <section class="section signup-section">
-    <div class="wrap signup-inner">
-      <div>
-        <h2>Not ready to buy yet?</h2>
-        <p>Join the list for travel-journaling prompts, packing guides, and first access to new editions.</p>
-      </div>
-      <form class="signup-form" id="signupForm">
-        <label class="sr-only" for="email">Email address</label>
-        <input type="email" id="email" name="email" placeholder="you@example.com" required />
-        <button type="submit" class="btn btn-primary">Notify Me</button>
-      </form>
-    </div>
-  </section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="wrap footer-inner">
-    <div class="footer-brand">
-      <span class="brand">Wander Wisdom</span>
-      <p>A guided journal for the road, and for the version of you that comes home from it.</p>
-    </div>
-    <div class="footer-links">
-      <div>
-        <h4>Shop</h4>
-        <a href="#buy">Digital Edition</a>
-        <a href="#buy">Printed Journal</a>
-        <a href="#buy">Gift Set</a>
-      </div>
-      <div>
-        <h4>About</h4>
-        <a href="#about">Our Story</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#faq">FAQ</a>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <a href="mailto:hello@wanderwisdomjournal.com">hello@wanderwisdomjournal.com</a>
-        <a href="#top">Instagram</a>
-      </div>
-    </div>
-  </div>
-  <div class="wrap footer-bottom">
-    <p>&copy; <span id="year"></span> Wander Wisdom. All rights reserved.</p>
-  </div>
-</footer>
-
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-<script src="script.js"></script>
+  <script src="assets/map-dots.js"></script>
+  <script src="entries.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
