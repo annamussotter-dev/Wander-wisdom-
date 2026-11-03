@@ -53,7 +53,7 @@ const PROMPTS = [
   const svg = $("#heroMap");
   const markerLayer = $("#markers");
   const pts = ENTRIES.map((e) => project(e.lat, e.lon));
-  const DOT_COLOURS = ["#ffc531", "#ff5a1f", "#ff4f8b", "#59b2ff"]; // sun, sunset, flamingo, sky
+  const DOT_COLOURS = ["#ff5a1f", "#1f3ddb", "#ff4f8b", "#f2a900", "#11a07a"]; // one ink per person
   const n = ENTRIES.length;
 
   // Journey line: gentle arcs from person to person
@@ -326,7 +326,7 @@ const PROMPTS = [
     toneTick = false;
     const y = bar.offsetHeight / 2;
     const under = toned.find((el) => { const r = el.getBoundingClientRect(); return r.top <= y && r.bottom > y; });
-    bar.dataset.tone = under ? under.dataset.tone : "dark";
+    bar.dataset.tone = under ? under.dataset.tone : "light";
   };
   window.addEventListener("scroll", () => { if (!toneTick) { toneTick = true; requestAnimationFrame(updateTone); } }, { passive: true });
   updateTone();

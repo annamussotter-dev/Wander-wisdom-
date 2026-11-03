@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Wander Wisdom – the travel journal the people you meet write in</title>
   <meta name="description" content="Wander Wisdom is a printed travel journal for co-creation: the people you meet on your travels write in it – their advice, lessons and perspectives. A5 softcover, 88 pages, by Anna Mussotter." />
-  <meta name="theme-color" content="#221a4a" />
+  <meta name="theme-color" content="#ffffff" />
   <meta property="og:title" content="Wander Wisdom" />
   <meta property="og:description" content="Unlock the potential of your everyday encounters. A travel journal the people you meet write in." />
-  <meta property="og:image" content="wander-wisdom-book/page-1-01.png" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23221a4a'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23ffc531'/%3E%3C/svg%3E" />
+  <meta property="og:image" content="assets/book/cover.webp" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fff'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23ff5a1f'/%3E%3C/svg%3E" />
   <link rel="preload" href="assets/fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/jost-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="styles.css" />
@@ -50,8 +50,8 @@
 
   <main>
     <!-- ============ HERO: the map of encounters ============ -->
-    <section class="hero" data-tone="dark" id="top" aria-label="A map of people met while travelling">
-      <svg class="map map-night" id="heroMap" aria-hidden="true" focusable="false">
+    <section class="hero" data-tone="light" id="top" aria-label="A map of people met while travelling">
+      <svg class="map map-paper" id="heroMap" aria-hidden="true" focusable="false">
         <defs>
           <mask id="routeReveal" maskUnits="userSpaceOnUse">
             <path class="route-mask" id="routeMask" />
@@ -66,8 +66,8 @@
         <h1>Unlock the potential of your everyday encounters.</h1>
         <p class="hero-sub">Every dot is someone I met on the road, and what they wrote in my journal.</p>
         <div class="hero-actions">
-          <button class="btn btn-light" id="startJourney" type="button">Read the first wisdom</button>
-          <a class="link-light" href="#order">Order the journal</a>
+          <button class="btn btn-ink" id="startJourney" type="button">Read the first wisdom</button>
+          <a class="link-quiet" href="#order">Order the journal</a>
         </div>
         <p class="hero-note">The five people on this map are examples. Real entries are on their way.</p>
       </div>
@@ -90,7 +90,7 @@
         <div class="entry-nav">
           <button class="btn-text" id="entryPrev" type="button">Previous</button>
           <span class="entry-count" id="entryCount" aria-live="polite"></span>
-          <button class="btn btn-light" id="entryNext" type="button">Next wisdom →</button>
+          <button class="btn btn-ink" id="entryNext" type="button">Next wisdom →</button>
         </div>
       </aside>
 
@@ -123,20 +123,29 @@
       </div>
     </section>
 
+    <!-- ============ THE MAP SPREAD ============ -->
+    <figure class="spread" data-tone="light">
+      <div class="spread-book">
+        <img src="assets/book/map-left.webp" alt="Left page of the world map spread, with a colour key for marking places" width="650" height="910" loading="lazy" />
+        <img src="assets/book/map-right.webp" alt="Right page of the world map spread" width="650" height="910" loading="lazy" />
+      </div>
+      <figcaption>The map to track, pages 16 and 17. Mark every place in the colour that belongs to it.</figcaption>
+    </figure>
+
     <!-- ============ WHAT'S INSIDE ============ -->
-    <section class="inside" data-tone="dark" id="inside">
+    <section class="inside" data-tone="light" id="inside">
       <div class="inside-head">
         <h2 class="display">What's inside</h2>
         <p class="lead">An A5 softcover journal with 88 pages. You fill in the first part. The people you meet fill in the rest.</p>
       </div>
 
-      <div class="pages" tabindex="0" aria-label="Pages from the printed journal, scroll sideways">
-        <figure><img src="wander-wisdom-book/page-1-01.png" alt="Cover: Wander Wisdom, unlock the potential of your everyday encounters" width="355" height="500" loading="lazy" /><figcaption>Cover</figcaption></figure>
-        <figure><img src="wander-wisdom-book/page-6-06.png" alt="Page 6: Concept – there's a hidden gem in everyone" width="355" height="500" loading="lazy" /><figcaption>Concept</figcaption></figure>
-        <figure><img src="wander-wisdom-book/page-9-09.png" alt="Page 9: Steps to your Wander Wisdom" width="355" height="500" loading="lazy" /><figcaption>Steps</figcaption></figure>
-        <figure><img src="wander-wisdom-book/page-10-10.png" alt="Page 10: your profile page with name, hometown and more" width="355" height="500" loading="lazy" /><figcaption>Your profile</figcaption></figure>
-        <figure><img src="wander-wisdom-book/page-20-20.png" alt="Page 20: My path – how to use the questionnaires" width="355" height="500" loading="lazy" /><figcaption>My path</figcaption></figure>
-        <figure><img src="wander-wisdom-book/page-71-71.png" alt="Page 71: Canvas of emotions" width="355" height="500" loading="lazy" /><figcaption>Canvas of emotions</figcaption></figure>
+      <div class="gallery">
+        <figure><img src="assets/book/cover.webp" alt="Cover: Wander Wisdom, unlock the potential of your everyday encounters" width="650" height="910" loading="lazy" /><figcaption>Cover</figcaption></figure>
+        <figure><img src="assets/book/steps.webp" alt="Steps to your Wander Wisdom" width="650" height="910" loading="lazy" /><figcaption>Steps</figcaption></figure>
+        <figure><img src="assets/book/profile.webp" alt="Your profile page with name, hometown and more" width="650" height="910" loading="lazy" /><figcaption>Your profile</figcaption></figure>
+        <figure><img src="assets/book/questionnaire.webp" alt="A questionnaire page: Life is about…" width="650" height="910" loading="lazy" /><figcaption>A questionnaire</figcaption></figure>
+        <figure><img src="wander-wisdom-book/page-20-20.png" alt="My path: how to use the questionnaires with others" width="355" height="500" loading="lazy" /><figcaption>My path</figcaption></figure>
+        <figure><img src="assets/book/canvas.webp" alt="Canvas of emotions: how does happiness feel to you?" width="650" height="910" loading="lazy" /><figcaption>Canvas of emotions</figcaption></figure>
       </div>
 
       <dl class="chapters">
@@ -173,7 +182,7 @@
     <!-- ============ ORDER ============ -->
     <section class="order" data-tone="light" id="order">
       <div class="order-map-wrap">
-        <svg class="map map-day" id="orderMap" aria-hidden="true" focusable="false"><path class="land" id="orderLand" /></svg>
+        <svg class="map map-paper" id="orderMap" aria-hidden="true" focusable="false"><path class="land" id="orderLand" /></svg>
         <div class="markers" id="orderMarkers"></div>
         <h2 class="display order-title">Where will your first wisdom come from?</h2>
         <p class="order-hint" id="orderHint">Tap anywhere on the map to place your first dot.</p>
