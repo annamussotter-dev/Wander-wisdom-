@@ -18,8 +18,8 @@
   --charcoal: #3a3938;
   --paper-warm: #faf9f6;     /* the page of a used notebook */
   --sand: #fbf7f0;           /* warm paper behind the maps */
-  --land: #e8dcc6;           /* beige continents */
-  --land-edge: #d8c8aa;
+  --land: #cfdcc0;           /* soft green continents */
+  --land-edge: #b4c6a2;
   --dotgrid: radial-gradient(circle, #d9d7d2 1px, transparent 1.3px);
 
   --display: "Anton", "Impact", "Arial Narrow", sans-serif;
@@ -229,6 +229,11 @@ a { color: inherit; }
   margin: 0;
 }
 .idea-body { max-width: var(--measure); text-align: left; font-size: 1.15rem; }
+.idea-body p { margin: 0 0 1.1em; }
+.idea-kicker { font-family: var(--hand); font-size: 1.75rem; line-height: 1; color: #55524d; margin: 0 0 4px !important; }
+.idea-kicker:not(:first-child) { margin-top: 1.4em !important; }
+.idea-mission { font-size: 1.3rem; font-weight: 400; line-height: 1.45; border-left: 2px solid var(--ink); padding-left: 16px; }
+.idea-mission strong { font-family: var(--display); font-weight: 400; text-transform: uppercase; letter-spacing: 0.02em; }
 .idea-grid {
   display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
   gap: clamp(32px, 6vw, 88px); align-items: center;
