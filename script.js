@@ -212,31 +212,3 @@ el(".card-next").addEventListener("click", () => {
 });
 el(".card-close").addEventListener("click", close);
 document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !card.hidden) close(); });
-
-/* --- keep the dashed path in "How to use it" lined up with the steps --- */
-const howPath = document.querySelector(".how-path");
-const steps = document.querySelector(".steps");
-function fitHowPath() {
-  if (!howPath || !steps) return;
-  const how = steps.closest(".how");
-  const top = steps.offsetTop;
-  howPath.style.setProperty("--steps-top", `${top}px`);
-  howPath.style.setProperty("--steps-h", `${steps.offsetHeight}px`);
-  // move each bend to the number circle of its step
-  const items = [...steps.children];
-  const w = howPath.getBoundingClientRect().width || 1;
-  const left = howPath.getBoundingClientRect().left;
-  const pts = items.map((li) => {
-    const r = li.getBoundingClientRect(), base = steps.getBoundingClientRect();
-    return [((r.left - left + 21) / w) * 100, ((r.top - base.top + 21) / steps.offsetHeight) * 600];
-  });
-  let d = `M${pts[0][0].toFixed(1)} ${pts[0][1].toFixed(1)}`;
-  for (let i = 1; i < pts.length; i++) {
-    const [x0, y0] = pts[i - 1], [x1, y1] = pts[i], k = (y1 - y0) * 0.55;
-    d += ` C ${x0.toFixed(1)} ${(y0 + k).toFixed(1)}, ${x1.toFixed(1)} ${(y1 - k).toFixed(1)}, ${x1.toFixed(1)} ${y1.toFixed(1)}`;
-  }
-  howPath.querySelector("path").setAttribute("d", d);
-}
-window.addEventListener("load", fitHowPath);
-window.addEventListener("resize", fitHowPath);
-document.fonts && document.fonts.ready.then(fitHowPath);
